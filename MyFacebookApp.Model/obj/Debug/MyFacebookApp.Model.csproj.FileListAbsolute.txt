@@ -1,0 +1,8 @@
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.Model\bin\Debug\MyFacebookApp.Model.dll
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.Model\bin\Debug\MyFacebookApp.Model.pdb
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.Model\bin\Debug\Facebook.dll
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.Model\bin\Debug\FbGraphApiWrapper.dll
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.Model\obj\Debug\MyFacebookApp.Model.Properties.Resources.resources
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.Model\obj\Debug\MyFacebookApp.Model.csproj.GenerateResource.Cache
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.Model\obj\Debug\MyFacebookApp.Model.dll
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.Model\obj\Debug\MyFacebookApp.Model.pdb

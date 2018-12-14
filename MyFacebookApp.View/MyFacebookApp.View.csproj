@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C0B74BB-1D9B-4068-B047-56A29BFC6FE8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyFacebookApp.View</RootNamespace>
+    <AssemblyName>MyFacebookApp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\MyFacebookApp.Model\Resources\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="FbGraphApiWrapper">
+      <HintPath>..\MyFacebookApp.Model\Resources\FbGraphApiWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlbumsManager.cs" />
+    <Compile Include="FacebookView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacebookView.Designer.cs">
+      <DependentUpon>FacebookView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IBackable.cs" />
+    <Compile Include="MatchPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MatchPanel.Designer.cs">
+      <DependentUpon>MatchPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JobPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="JobPanel.Designer.cs">
+      <DependentUpon>JobPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HomePanel.Designer.cs">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ILogoutable.cs" />
+    <Compile Include="PictureWrapper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserDetailsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserDetailsPanel.Designer.cs">
+      <DependentUpon>UserDetailsPanel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FacebookView.resx">
+      <DependentUpon>FacebookView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatchPanel.resx">
+      <DependentUpon>MatchPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JobPanel.resx">
+      <DependentUpon>JobPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomePanel.resx">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserDetailsPanel.resx">
+      <DependentUpon>UserDetailsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyFacebookApp.Model\MyFacebookApp.Model.csproj">
+      <Project>{002c85a9-9b21-454e-b57a-b1eaf17750a7}</Project>
+      <Name>MyFacebookApp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dateButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jobButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loadButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hoverRoundedButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basicRoundedButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clickRoundedButtonIcon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

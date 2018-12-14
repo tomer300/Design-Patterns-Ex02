@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ArrayOfHitechKeyWord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <HitechKeyWord>
+    <m_KeyWord>app</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>communications</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>computer</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>cyber</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>develop</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>developer</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>electronic</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>hardware</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>operating system</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>software</m_KeyWord>
+  </HitechKeyWord>
+  <HitechKeyWord>
+    <m_KeyWord>technology</m_KeyWord>
+  </HitechKeyWord>
+</ArrayOfHitechKeyWord>

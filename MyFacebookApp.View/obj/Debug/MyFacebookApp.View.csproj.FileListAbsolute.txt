@@ -1,0 +1,17 @@
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\bin\Debug\MyFacebookApp.exe.config
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\bin\Debug\MyFacebookApp.exe
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\bin\Debug\MyFacebookApp.pdb
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\bin\Debug\Facebook.dll
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\bin\Debug\FbGraphApiWrapper.dll
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\bin\Debug\MyFacebookApp.Model.dll
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\bin\Debug\MyFacebookApp.Model.pdb
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.csprojResolveAssemblyReference.cache
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.FacebookView.resources
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.MatchPanel.resources
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.JobPanel.resources
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.HomePanel.resources
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.Properties.Resources.resources
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.UserDetailsPanel.resources
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.csproj.GenerateResource.Cache
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.exe
+c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.pdb
