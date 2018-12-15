@@ -48,12 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlbumsManager.cs" />
+    <Compile Include="DetailedProfilePicture.cs" />
     <Compile Include="FacebookView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FacebookView.Designer.cs">
       <DependentUpon>FacebookView.cs</DependentUpon>
     </Compile>
+    <Compile Include="FriendsDisplayer.cs" />
     <Compile Include="IBackable.cs" />
     <Compile Include="MatchPanel.cs">
       <SubType>UserControl</SubType>

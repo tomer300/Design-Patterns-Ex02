@@ -41,13 +41,14 @@ namespace MyFacebookApp.View
 			flowLayoutPanelContactPhotos.Controls.Clear();
 			try
 			{
-				hitechWorkerContacts = r_AppEngine.FindHitechWorkersContacts();
+				hitechWorkerContacts = r_AppEngine.GetFriends(); //r_AppEngine.FindHitechWorkersContacts();
 				if (hitechWorkerContacts != null && hitechWorkerContacts.Count > 0)
 				{
 					foreach (AppUser currentContact in hitechWorkerContacts)
 					{
 						addContactToListBoxJobs(currentContact, ref hasShownMessageBox);
 					}
+					
 				}
 				else
 				{
@@ -65,14 +66,12 @@ namespace MyFacebookApp.View
 		private void addContactToListBoxJobs(AppUser i_CurrentContact, ref bool io_HasShownMessageBox)
 		{
 			string contactFullName = string.Empty;
-			string profilePictureURL = string.Empty;
 			string contactFirstName = string.Empty;
 			string contactLastName = string.Empty;
 			string workPlace = string.Empty;
 
 			try
 			{
-				profilePictureURL = i_CurrentContact.GetProfilePicture();
 				contactFirstName = i_CurrentContact.GetFirstName();
 				contactLastName = i_CurrentContact.GetLastName();
 				workPlace = i_CurrentContact.GetWorkPlace().Name;
@@ -87,13 +86,8 @@ namespace MyFacebookApp.View
 			}
 			finally
 			{
-				PictureWrapper	contactPictureWrapper = new PictureWrapper(profilePictureURL);
-				PictureBox		contactPic = contactPictureWrapper.PictureBox;
 
 				contactFullName = string.Format("{0} {1}", contactFirstName, contactLastName);
-				contactPic.Name = contactFullName;
-				contactPic.Click += new EventHandler(contactPic_Click);
-				flowLayoutPanelContactPhotos.Controls.Add(contactPic);
 				listBoxJobs.Items.Add(
 					new ContactItem(new KeyValuePair<string, string>(
 						contactFullName,
@@ -133,7 +127,7 @@ namespace MyFacebookApp.View
 			}
 		}
 
-		private void contactPic_Click(object sender, EventArgs e)
+		private void contactPic_Click(object sender)
 		{
 			PictureBox	clickedContact = sender as PictureBox;
 			ContactItem currentContactInfo;

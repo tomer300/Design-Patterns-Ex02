@@ -88,3 +88,4 @@ namespace MyFacebookApp.View
 		}
 	}
 }
+//maybe holding a collection of users albums.

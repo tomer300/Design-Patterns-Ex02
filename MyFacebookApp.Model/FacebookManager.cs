@@ -3,7 +3,7 @@ using FacebookWrapper;
 
 namespace MyFacebookApp.Model
 {
-	public class FacebookManager
+	public sealed class FacebookManager
 	{
 		private FacebookManager()
 		{

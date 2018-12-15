@@ -56,13 +56,8 @@ namespace MyFacebookApp.View
 			flowLayoutPanelFriends.Controls.Clear();
 			try
 			{
-				FacebookObjectCollection<AppUser>	myFriends = r_AppEngine.GetFriends();
-				bool								hasShownMessageBox = false;
-
-				foreach (AppUser friend in myFriends)
-				{
-					showFriendProfilePicture(friend, ref hasShownMessageBox);
-				}
+				FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.GetFriends(), flowLayoutPanelFriends);
+				displayer.Display();
 			}
 			catch (Exception ex)
 			{
@@ -70,12 +65,48 @@ namespace MyFacebookApp.View
 			}
 		}
 
-		private void showFriendProfilePicture(AppUser i_Friend, ref bool io_HasShownMessageBox)
+		/*private void showFriendProfilePicture(AppUser i_Friend, ref bool io_HasShownMessageBox)
 		{
 			string profilePictureURL = string.Empty;
+			string firstName = string.Empty;
+			string lastName = string.Empty;
 
 			try
 			{
+				firstName = i_Friend.GetFirstName();
+				lastName = i_Friend.GetLastName();
+				profilePictureURL = i_Friend.GetProfilePicture();
+			}
+			catch (Exception ex)
+			{
+				if (!io_HasShownMessageBox)
+				{
+					MessageBox.Show(ex.Message);
+					io_HasShownMessageBox = true;
+				}
+			}
+			finally
+			{
+				PictureWrapper			friendPictureWrapper = new PictureWrapper(profilePictureURL);
+				DetailedProfilePicture	friendPicture = new DetailedProfilePicture(
+					friendPictureWrapper.PictureBox,
+					firstName, 
+					lastName);
+
+				flowLayoutPanelFriends.Controls.Add(friendPicture.FriendProfilePicture);
+			}
+		}*/
+
+/*		private void showFriendProfilePicture(AppUser i_Friend, ref bool io_HasShownMessageBox)
+		{
+			string profilePictureURL = string.Empty;
+			string firstName = string.Empty;
+			string lastName = string.Empty;
+
+			try
+			{
+				firstName = i_Friend.GetFirstName();
+				lastName = i_Friend.GetLastName();
 				profilePictureURL = i_Friend.GetProfilePicture();
 			}
 			catch (Exception ex)
@@ -89,51 +120,16 @@ namespace MyFacebookApp.View
 			finally
 			{
 				PictureWrapper friendPictureWrapper = new PictureWrapper(profilePictureURL);
-				PictureBox friendPicture = friendPictureWrapper.PictureBox;
+				DetailedProfilePicture friendPicture = new DetailedProfilePicture(
+					friendPictureWrapper.PictureBox,
+					firstName,
+					lastName);
 
-				friendPicture.Paint += new PaintEventHandler((senderFriend, ePaint) =>
-				{
-					writeNameOnFriendPicture(senderFriend, ePaint, i_Friend);
-				});
-
-				flowLayoutPanelFriends.Controls.Add(friendPicture);
+				flowLayoutPanelFriends.Controls.Add(friendPicture.FriendProfilePicture);
 			}
-		}
+		}*/
 
-		private void writeNameOnFriendPicture(object sender, PaintEventArgs ePaint, AppUser i_Friend)
-		{
-			PictureBox friendPicture = sender as PictureBox;
 
-			if (friendPicture != null)
-			{
-				string friendFirstName = string.Empty;
-				string friendLastName = string.Empty;
-				try
-				{
-					friendFirstName = i_Friend.GetFirstName();
-					friendLastName = i_Friend.GetLastName();
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message);
-				}
-				finally
-				{
-					float fontSize = 12;
-					SizeF firstNameSize = ePaint.Graphics.MeasureString(friendFirstName, new Font("Franklin Gothic Heavy", fontSize));
-					SizeF lastNameSize = ePaint.Graphics.MeasureString(friendLastName, new Font("Franklin Gothic Heavy", fontSize));
-					PointF locationToDraw = new PointF();
-
-					ePaint.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-					locationToDraw.X = (friendPicture.Width / 2) - (firstNameSize.Width / 2);
-					locationToDraw.Y = (friendPicture.Height / (float)1.4) - (firstNameSize.Height / (float)2);
-					ePaint.Graphics.DrawString(friendFirstName, new Font("Franklin Gothic Heavy", fontSize), Brushes.White, locationToDraw);
-					locationToDraw.X = (friendPicture.Width / 2) - (lastNameSize.Width / 2);
-					locationToDraw.Y = (friendPicture.Height / (float)1.1) - (lastNameSize.Height / (float)2);
-					ePaint.Graphics.DrawString(friendLastName, new Font("Franklin Gothic Heavy", fontSize), Brushes.White, locationToDraw);
-				}
-			}
-		}
 
 		private void fetchInitialDetails()
 		{

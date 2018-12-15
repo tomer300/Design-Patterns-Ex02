@@ -35,8 +35,7 @@ namespace MyFacebookApp.View
 		{
 			if (checkedGenderPreference())
 			{
-				FacebookObjectCollection<AppUser>	potentialMatches;
-				bool								hasShownMessageBox = false;
+				FacebookObjectCollection<AppUser> potentialMatches;
 
 				flowLayoutPanelMatchPictures.Controls.Clear();
 				panelUserDetails.Visible = false;
@@ -48,10 +47,10 @@ namespace MyFacebookApp.View
 						comboBoxAgeRanges.Items[comboBoxAgeRanges.SelectedIndex].ToString());
 					if (potentialMatches != null && potentialMatches.Count > 0)
 					{
-						foreach (AppUser currentPotentialMatch in potentialMatches)
-						{
-							addPotentialMatch(currentPotentialMatch, ref hasShownMessageBox);
-						}
+						FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.GetFriends(), flowLayoutPanelMatchPictures);
+						displayer.FriendOnClickDelegate += match_Click;
+						displayer.Display();
+
 					}
 					else
 					{
@@ -69,34 +68,6 @@ namespace MyFacebookApp.View
 			}
 		}
 
-		private void addPotentialMatch(AppUser i_CurrentPotentialMatch, ref bool io_HasShownMessageBox)
-		{
-			PictureWrapper	matchPicWrapper;
-			string			profilePictureURL = string.Empty;
-
-			try
-			{
-				profilePictureURL = i_CurrentPotentialMatch.GetProfilePicture();
-			}
-			catch (Exception ex)
-			{
-				if (!io_HasShownMessageBox)
-				{
-					MessageBox.Show(ex.Message);
-					io_HasShownMessageBox = true;
-				}
-			}
-			finally
-			{
-				PictureBox matchPic;
-
-				matchPicWrapper = new PictureWrapper(profilePictureURL);
-				matchPic = matchPicWrapper.PictureBox;
-				matchPic.Cursor = Cursors.Hand;
-				matchPic.Click += (user, ex) => match_Click(i_CurrentPotentialMatch);
-				flowLayoutPanelMatchPictures.Controls.Add(matchPic);
-			}
-		}
 
 		private bool checkedGenderPreference()
 		{
@@ -110,8 +81,9 @@ namespace MyFacebookApp.View
 			return choseGender;
 		}
 
-		private void match_Click(AppUser i_PotentialMatch)
+		private void match_Click(object i_PotentialMatch)
 		{
+			AppUser							potentinalMatch = i_PotentialMatch as AppUser;
 			AlbumsManager					matchAlbumsManager;
 			FacebookObjectCollection<Album> matchAlbums;
 			string							profilePictureURL = string.Empty;
@@ -119,35 +91,37 @@ namespace MyFacebookApp.View
 			string							potentialMatchLastName = string.Empty;
 			string							potentialMatchCity = string.Empty;
 			string							potentialMatchBirthday = string.Empty;
-
-			try
+			if (potentinalMatch != null)
 			{
-				matchAlbums = i_PotentialMatch.GetAlbums();
-				if (matchAlbums != null)
+				try
 				{
-					matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
-					matchAlbumsManager.DisplayAlbums();
-				}
+					matchAlbums = potentinalMatch.GetAlbums();
+					if (matchAlbums != null)
+					{
+						matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
+						matchAlbumsManager.DisplayAlbums();
+					}
 
-				profilePictureURL = i_PotentialMatch.GetProfilePicture();
-				potentialMatchFirstName = i_PotentialMatch.GetFirstName();
-				potentialMatchLastName = i_PotentialMatch.GetLastName();
-				potentialMatchCity = i_PotentialMatch.GetCity();
-				potentialMatchBirthday = i_PotentialMatch.GetBirthday();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message);
-			}
-			finally
-			{
-				panelUserDetails.SetAllUserDetails(
-					profilePictureURL,
-					potentialMatchFirstName,
-					potentialMatchLastName,
-					potentialMatchCity,
-					potentialMatchBirthday);
-				panelUserDetails.Visible = true;
+					profilePictureURL = potentinalMatch.GetProfilePicture();
+					potentialMatchFirstName = potentinalMatch.GetFirstName();
+					potentialMatchLastName = potentinalMatch.GetLastName();
+					potentialMatchCity = potentinalMatch.GetCity();
+					potentialMatchBirthday = potentinalMatch.GetBirthday();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+				finally
+				{
+					panelUserDetails.SetAllUserDetails(
+						profilePictureURL,
+						potentialMatchFirstName,
+						potentialMatchLastName,
+						potentialMatchCity,
+						potentialMatchBirthday);
+					panelUserDetails.Visible = true;
+				}
 			}
 		}
 	}
