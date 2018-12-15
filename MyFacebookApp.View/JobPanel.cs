@@ -48,7 +48,10 @@ namespace MyFacebookApp.View
 					{
 						addContactToListBoxJobs(currentContact, ref hasShownMessageBox);
 					}
-					
+					FriendsDisplayer displayer = new FriendsDisplayer(hitechWorkerContacts, flowLayoutPanelContactPhotos);
+					displayer.FriendOnClickDelegate += contactPic_Click;
+					displayer.Display();
+
 				}
 				else
 				{
@@ -74,7 +77,7 @@ namespace MyFacebookApp.View
 			{
 				contactFirstName = i_CurrentContact.GetFirstName();
 				contactLastName = i_CurrentContact.GetLastName();
-				workPlace = i_CurrentContact.GetWorkPlace().Name;
+				workPlace = i_CurrentContact.GetWorkPlace()?.Name;
 			}
 			catch (Exception ex)
 			{
@@ -127,7 +130,7 @@ namespace MyFacebookApp.View
 			}
 		}
 
-		private void contactPic_Click(object sender)
+		private void contactPic_Click(object sender, EventArgs e)
 		{
 			PictureBox	clickedContact = sender as PictureBox;
 			ContactItem currentContactInfo;

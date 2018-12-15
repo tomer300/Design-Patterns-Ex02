@@ -5,8 +5,8 @@ using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
 {
-	public delegate void friendPictureClickEvent(object i_MethodArgument);
-	class FriendsDisplayer
+	public delegate void friendPictureClickEvent(object i_Sender, FriendsDisplayer.AppUserEventArgs i_EventArgs);
+	public class FriendsDisplayer
 	{
 		private readonly FacebookObjectCollection<AppUser> r_Friends;
 		private readonly Panel r_DisplayPanel;
@@ -59,11 +59,18 @@ namespace MyFacebookApp.View
 				{
 					friendPicture.FriendProfilePicture.Name = string.Format("{0} {1}", firstName, lastName);
 					friendPicture.FriendProfilePicture.Cursor = Cursors.Hand;
-					friendPicture.FriendProfilePicture.Click += (user, e) => FriendOnClickDelegate(i_Friend);
+					friendPicture.FriendProfilePicture.Click += (user,e) => FriendOnClickDelegate.Invoke(friendPicture.FriendProfilePicture, new AppUserEventArgs(i_Friend));
 				}
 				r_DisplayPanel.Controls.Add(friendPicture.FriendProfilePicture);
 			}
 		}
-
+		public class AppUserEventArgs: EventArgs
+		{
+			public AppUser User { get; private set; }
+			public AppUserEventArgs(AppUser i_User)
+			{
+				User = i_User;
+			}
+		}
 	}
 }

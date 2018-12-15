@@ -81,32 +81,34 @@ namespace MyFacebookApp.View
 			return choseGender;
 		}
 
-		private void match_Click(object i_PotentialMatch)
+		private void match_Click(object i_sender, EventArgs e)
 		{
-			AppUser							potentinalMatch = i_PotentialMatch as AppUser;
-			AlbumsManager					matchAlbumsManager;
-			FacebookObjectCollection<Album> matchAlbums;
-			string							profilePictureURL = string.Empty;
-			string							potentialMatchFirstName = string.Empty;
-			string							potentialMatchLastName = string.Empty;
-			string							potentialMatchCity = string.Empty;
-			string							potentialMatchBirthday = string.Empty;
-			if (potentinalMatch != null)
+			FriendsDisplayer.AppUserEventArgs	appUserEventArgs = e as FriendsDisplayer.AppUserEventArgs;
+			AppUser								potentialMatch;
+			AlbumsManager						matchAlbumsManager;
+			FacebookObjectCollection<Album>		matchAlbums;
+			string								profilePictureURL = string.Empty;
+			string								potentialMatchFirstName = string.Empty;
+			string								potentialMatchLastName = string.Empty;
+			string								potentialMatchCity = string.Empty;
+			string								potentialMatchBirthday = string.Empty;
+			if (appUserEventArgs != null)
 			{
+				potentialMatch = appUserEventArgs.User;
 				try
 				{
-					matchAlbums = potentinalMatch.GetAlbums();
+					matchAlbums = potentialMatch.GetAlbums();
 					if (matchAlbums != null)
 					{
 						matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
 						matchAlbumsManager.DisplayAlbums();
 					}
 
-					profilePictureURL = potentinalMatch.GetProfilePicture();
-					potentialMatchFirstName = potentinalMatch.GetFirstName();
-					potentialMatchLastName = potentinalMatch.GetLastName();
-					potentialMatchCity = potentinalMatch.GetCity();
-					potentialMatchBirthday = potentinalMatch.GetBirthday();
+					profilePictureURL = potentialMatch.GetProfilePicture();
+					potentialMatchFirstName = potentialMatch.GetFirstName();
+					potentialMatchLastName = potentialMatch.GetLastName();
+					potentialMatchCity = potentialMatch.GetCity();
+					potentialMatchBirthday = potentialMatch.GetBirthday();
 				}
 				catch (Exception ex)
 				{
