@@ -44,14 +44,9 @@
 			this.friendsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.postsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.albumBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.imageAlbumPictureBox = new System.Windows.Forms.PictureBox();
-			this.flowLayoutPanelAlbums.SuspendLayout();
 			this.panelHomePageTop.SuspendLayout();
 			this.flowLayoutPanelBorderPosts.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.imageAlbumPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// flowLayoutPanelFriends
@@ -101,7 +96,6 @@
 			this.flowLayoutPanelAlbums.AutoScroll = true;
 			this.flowLayoutPanelAlbums.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.flowLayoutPanelAlbums.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.flowLayoutPanelAlbums.Controls.Add(this.imageAlbumPictureBox);
 			this.flowLayoutPanelAlbums.Location = new System.Drawing.Point(6, 383);
 			this.flowLayoutPanelAlbums.Name = "flowLayoutPanelAlbums";
 			this.flowLayoutPanelAlbums.Size = new System.Drawing.Size(458, 142);
@@ -227,20 +221,6 @@
 			// 
 			this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
 			// 
-			// albumBindingSource
-			// 
-			this.albumBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Album);
-			// 
-			// imageAlbumPictureBox
-			// 
-			this.imageAlbumPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.albumBindingSource, "ImageAlbum", true));
-			this.imageAlbumPictureBox.Location = new System.Drawing.Point(3, 3);
-			this.imageAlbumPictureBox.Name = "imageAlbumPictureBox";
-			this.imageAlbumPictureBox.Size = new System.Drawing.Size(100, 100);
-			this.imageAlbumPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.imageAlbumPictureBox.TabIndex = 1;
-			this.imageAlbumPictureBox.TabStop = false;
-			// 
 			// HomePanel
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -256,13 +236,10 @@
 			this.Controls.Add(this.panelHomePageTop);
 			this.Name = "HomePanel";
 			this.Size = new System.Drawing.Size(936, 537);
-			this.flowLayoutPanelAlbums.ResumeLayout(false);
 			this.panelHomePageTop.ResumeLayout(false);
 			this.panelHomePageTop.PerformLayout();
 			this.flowLayoutPanelBorderPosts.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.imageAlbumPictureBox)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -282,7 +259,5 @@
 		private MyFacebookApp.View.RoundedButton albumsRoundedButton;
 		private MyFacebookApp.View.RoundedButton eventsRoundedButton;
 		private System.Windows.Forms.BindingSource eventBindingSource;
-		private System.Windows.Forms.PictureBox imageAlbumPictureBox;
-		private System.Windows.Forms.BindingSource albumBindingSource;
 	}
 }

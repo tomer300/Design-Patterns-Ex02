@@ -107,10 +107,9 @@ namespace MyFacebookApp.View
 
 					if (usersAlbums != null && usersAlbums.Count > 0)
 					{
-						//m_AlbumsManager = new AlbumsManager(r_AppEngine.Albums, flowLayoutPanelAlbums);
-						//m_AlbumsManager.AlbumClickedAction += albumsButtonChangeDescription;
-						//m_AlbumsManager.DisplayAlbums();
-						albumBindingSource.DataSource = usersAlbums;
+						m_AlbumsManager = new AlbumsManager(r_AppEngine.Albums, flowLayoutPanelAlbums);
+						m_AlbumsManager.AlbumClickedAction += albumsButtonChangeDescription;
+						m_AlbumsManager.DisplayAlbums();
 					}
 					else
 					{
