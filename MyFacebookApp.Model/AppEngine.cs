@@ -14,7 +14,26 @@ namespace MyFacebookApp.Model
 			r_LoggedUser = i_AppUser;
 		}
 
-		public string GetProfilePicture()
+		public string ProfilePicture { get { return r_LoggedUser.GetProfilePicture(); } }
+
+		public string FirstName { get { return r_LoggedUser.GetFirstName(); } }
+
+		public string LastName { get { return r_LoggedUser.GetProfilePicture(); } }
+
+		public string City { get { return r_LoggedUser.GetCity(); } }
+
+		public string Birthday { get { return r_LoggedUser.GetBirthday(); } }
+
+		public FacebookObjectCollection<Album> Albums { get { return r_LoggedUser.GetAlbums(); } }
+
+		public FacebookObjectCollection<Post> Posts { get { return r_LoggedUser.GetPosts(); } }
+
+		public FacebookObjectCollection<Event> Events { get { return r_LoggedUser.GetEvents(); } }
+
+		public FacebookObjectCollection<AppUser> Friends { get { return r_LoggedUser.GetFriends(); } }
+
+
+		/*public string GetProfilePicture()
 		{
 			return r_LoggedUser.GetProfilePicture();
 		}
@@ -33,16 +52,8 @@ namespace MyFacebookApp.Model
 		{
 			return r_LoggedUser.GetAlbums();
 		}
-
-		public FacebookObjectCollection<AppUser> FindHitechWorkersContacts()
-		{
-			if (m_Job == null)
-			{
-				m_Job = new Job(r_LoggedUser.GetFriends());
-			}
-
-			return m_Job.FindHitechWorkersContacts();
-		}
+		
+		
 
 		public FacebookObjectCollection<Event> GetEvents()
 		{
@@ -68,7 +79,16 @@ namespace MyFacebookApp.Model
 		{
 			return r_LoggedUser.GetBirthday();
 		}
+		*/
+		public FacebookObjectCollection<AppUser> FindHitechWorkersContacts()
+		{
+			if (m_Job == null)
+			{
+				m_Job = new Job(r_LoggedUser.GetFriends());
+			}
 
+			return m_Job.FindHitechWorkersContacts();
+		}
 		public FacebookObjectCollection<AppUser> FindAMatch(bool i_ChoseGirls, bool i_ChoseBoys, string i_AgeRange)
 		{
 			if (m_Match == null)

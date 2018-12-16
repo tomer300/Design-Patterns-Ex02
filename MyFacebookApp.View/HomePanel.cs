@@ -56,7 +56,7 @@ namespace MyFacebookApp.View
 			flowLayoutPanelFriends.Controls.Clear();
 			try
 			{
-				FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.GetFriends(), flowLayoutPanelFriends);
+				FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.Friends, flowLayoutPanelFriends);
 				displayer.Display();
 			}
 			catch (Exception ex)
@@ -64,71 +64,6 @@ namespace MyFacebookApp.View
 				MessageBox.Show(ex.Message);
 			}
 		}
-
-		/*private void showFriendProfilePicture(AppUser i_Friend, ref bool io_HasShownMessageBox)
-		{
-			string profilePictureURL = string.Empty;
-			string firstName = string.Empty;
-			string lastName = string.Empty;
-
-			try
-			{
-				firstName = i_Friend.GetFirstName();
-				lastName = i_Friend.GetLastName();
-				profilePictureURL = i_Friend.GetProfilePicture();
-			}
-			catch (Exception ex)
-			{
-				if (!io_HasShownMessageBox)
-				{
-					MessageBox.Show(ex.Message);
-					io_HasShownMessageBox = true;
-				}
-			}
-			finally
-			{
-				PictureWrapper			friendPictureWrapper = new PictureWrapper(profilePictureURL);
-				DetailedProfilePicture	friendPicture = new DetailedProfilePicture(
-					friendPictureWrapper.PictureBox,
-					firstName, 
-					lastName);
-
-				flowLayoutPanelFriends.Controls.Add(friendPicture.FriendProfilePicture);
-			}
-		}*/
-
-/*		private void showFriendProfilePicture(AppUser i_Friend, ref bool io_HasShownMessageBox)
-		{
-			string profilePictureURL = string.Empty;
-			string firstName = string.Empty;
-			string lastName = string.Empty;
-
-			try
-			{
-				firstName = i_Friend.GetFirstName();
-				lastName = i_Friend.GetLastName();
-				profilePictureURL = i_Friend.GetProfilePicture();
-			}
-			catch (Exception ex)
-			{
-				if (!io_HasShownMessageBox)
-				{
-					MessageBox.Show(ex.Message);
-					io_HasShownMessageBox = true;
-				}
-			}
-			finally
-			{
-				PictureWrapper friendPictureWrapper = new PictureWrapper(profilePictureURL);
-				DetailedProfilePicture friendPicture = new DetailedProfilePicture(
-					friendPictureWrapper.PictureBox,
-					firstName,
-					lastName);
-
-				flowLayoutPanelFriends.Controls.Add(friendPicture.FriendProfilePicture);
-			}
-		}*/
-
 
 
 		private void fetchInitialDetails()
@@ -141,11 +76,11 @@ namespace MyFacebookApp.View
 
 			try
 			{
-				profilePictureURL = r_AppEngine.GetProfilePicture();
-				firstName = r_AppEngine.GetFirstName();
-				lastName = r_AppEngine.GetLastName();
-				cityName = r_AppEngine.GetCity();
-				birthday = r_AppEngine.GetBirthday();
+				profilePictureURL = r_AppEngine.ProfilePicture;
+				firstName = r_AppEngine.FirstName;
+				lastName = r_AppEngine.LastName;
+				cityName = r_AppEngine.City;
+				birthday = r_AppEngine.Birthday;
 			}
 			catch (Exception ex)
 			{
@@ -168,11 +103,11 @@ namespace MyFacebookApp.View
 			{
 				try
 				{
-					FacebookObjectCollection<Album> usersAlbums = r_AppEngine.GetAlbums();
+					FacebookObjectCollection<Album> usersAlbums = r_AppEngine.Albums;
 
 					if (usersAlbums != null && usersAlbums.Count > 0)
 					{
-						m_AlbumsManager = new AlbumsManager(r_AppEngine.GetAlbums(), flowLayoutPanelAlbums);
+						m_AlbumsManager = new AlbumsManager(r_AppEngine.Albums, flowLayoutPanelAlbums);
 						m_AlbumsManager.AlbumClickedAction += albumsButtonChangeDescription;
 						m_AlbumsManager.DisplayAlbums();
 					}
@@ -217,7 +152,7 @@ namespace MyFacebookApp.View
 			listBoxEvents.Items.Clear();
 			try
 			{
-				allEvents = r_AppEngine.GetEvents();
+				allEvents = r_AppEngine.Events;
 				if (allEvents != null && allEvents.Count > 0)
 				{
 					listBoxEvents.DisplayMember = "Name";
@@ -245,7 +180,7 @@ namespace MyFacebookApp.View
 			tableLayoutPanelPosts.RowStyles.Clear();
 			try
 			{
-				allPosts = r_AppEngine.GetPosts();
+				allPosts = r_AppEngine.Posts;
 				if (allPosts != null && allPosts.Count > 0)
 				{
 					foreach (Post currentPost in allPosts)

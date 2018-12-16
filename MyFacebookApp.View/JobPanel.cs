@@ -41,7 +41,7 @@ namespace MyFacebookApp.View
 			flowLayoutPanelContactPhotos.Controls.Clear();
 			try
 			{
-				hitechWorkerContacts = r_AppEngine.GetFriends(); //r_AppEngine.FindHitechWorkersContacts();
+				hitechWorkerContacts = r_AppEngine.Friends; //r_AppEngine.FindHitechWorkersContacts();
 				if (hitechWorkerContacts != null && hitechWorkerContacts.Count > 0)
 				{
 					foreach (AppUser currentContact in hitechWorkerContacts)

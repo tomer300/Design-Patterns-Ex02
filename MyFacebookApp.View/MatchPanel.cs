@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using MyFacebookApp.Model;
@@ -47,7 +41,7 @@ namespace MyFacebookApp.View
 						comboBoxAgeRanges.Items[comboBoxAgeRanges.SelectedIndex].ToString());
 					if (potentialMatches != null && potentialMatches.Count > 0)
 					{
-						FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.GetFriends(), flowLayoutPanelMatchPictures);
+						FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.Friends, flowLayoutPanelMatchPictures);
 						displayer.FriendOnClickDelegate += match_Click;
 						displayer.Display();
 
@@ -92,37 +86,41 @@ namespace MyFacebookApp.View
 			string								potentialMatchLastName = string.Empty;
 			string								potentialMatchCity = string.Empty;
 			string								potentialMatchBirthday = string.Empty;
+
 			if (appUserEventArgs != null)
 			{
 				potentialMatch = appUserEventArgs.User;
-				try
+				if (potentialMatch != null)
 				{
-					matchAlbums = potentialMatch.GetAlbums();
-					if (matchAlbums != null)
+					try
 					{
-						matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
-						matchAlbumsManager.DisplayAlbums();
-					}
+						matchAlbums = potentialMatch.GetAlbums();
+						if (matchAlbums != null)
+						{
+							matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
+							matchAlbumsManager.DisplayAlbums();
+						}
 
-					profilePictureURL = potentialMatch.GetProfilePicture();
-					potentialMatchFirstName = potentialMatch.GetFirstName();
-					potentialMatchLastName = potentialMatch.GetLastName();
-					potentialMatchCity = potentialMatch.GetCity();
-					potentialMatchBirthday = potentialMatch.GetBirthday();
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message);
-				}
-				finally
-				{
-					panelUserDetails.SetAllUserDetails(
-						profilePictureURL,
-						potentialMatchFirstName,
-						potentialMatchLastName,
-						potentialMatchCity,
-						potentialMatchBirthday);
-					panelUserDetails.Visible = true;
+						profilePictureURL = potentialMatch.GetProfilePicture();
+						potentialMatchFirstName = potentialMatch.GetFirstName();
+						potentialMatchLastName = potentialMatch.GetLastName();
+						potentialMatchCity = potentialMatch.GetCity();
+						potentialMatchBirthday = potentialMatch.GetBirthday();
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show(ex.Message);
+					}
+					finally
+					{
+						panelUserDetails.SetAllUserDetails(
+							profilePictureURL,
+							potentialMatchFirstName,
+							potentialMatchLastName,
+							potentialMatchCity,
+							potentialMatchBirthday);
+						panelUserDetails.Visible = true;
+					}
 				}
 			}
 		}

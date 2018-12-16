@@ -68,6 +68,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\AppEngine.datasource" />
     <None Include="Resources\hitechKeyWords.xml" />
   </ItemGroup>
   <ItemGroup>
