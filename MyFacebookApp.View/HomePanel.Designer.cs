@@ -29,6 +29,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePanel));
 			this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
 			this.tableLayoutPanelPosts = new System.Windows.Forms.TableLayoutPanel();
@@ -36,14 +37,21 @@
 			this.flowLayoutPanelAlbums = new System.Windows.Forms.FlowLayoutPanel();
 			this.panelHomePageTop = new System.Windows.Forms.Panel();
 			this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
+			this.panelUserDetails = new MyFacebookApp.View.UserDetailsPanel();
 			this.flowLayoutPanelBorderPosts = new System.Windows.Forms.FlowLayoutPanel();
 			this.eventsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.albumsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.friendsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.postsRoundedButton = new MyFacebookApp.View.RoundedButton();
-			this.panelUserDetails = new MyFacebookApp.View.UserDetailsPanel();
+			this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.albumBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.imageAlbumPictureBox = new System.Windows.Forms.PictureBox();
+			this.flowLayoutPanelAlbums.SuspendLayout();
 			this.panelHomePageTop.SuspendLayout();
 			this.flowLayoutPanelBorderPosts.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.imageAlbumPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// flowLayoutPanelFriends
@@ -75,6 +83,8 @@
 			// 
 			this.listBoxEvents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.listBoxEvents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.listBoxEvents.DataSource = this.eventBindingSource;
+			this.listBoxEvents.DisplayMember = "Name";
 			this.listBoxEvents.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.listBoxEvents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
 			this.listBoxEvents.FormattingEnabled = true;
@@ -84,12 +94,14 @@
 			this.listBoxEvents.Name = "listBoxEvents";
 			this.listBoxEvents.Size = new System.Drawing.Size(458, 142);
 			this.listBoxEvents.TabIndex = 29;
+			this.listBoxEvents.ValueMember = "AttendingUsers";
 			// 
 			// flowLayoutPanelAlbums
 			// 
 			this.flowLayoutPanelAlbums.AutoScroll = true;
 			this.flowLayoutPanelAlbums.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.flowLayoutPanelAlbums.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.flowLayoutPanelAlbums.Controls.Add(this.imageAlbumPictureBox);
 			this.flowLayoutPanelAlbums.Location = new System.Drawing.Point(6, 383);
 			this.flowLayoutPanelAlbums.Name = "flowLayoutPanelAlbums";
 			this.flowLayoutPanelAlbums.Size = new System.Drawing.Size(458, 142);
@@ -117,6 +129,13 @@
 			this.checkBoxRememberMe.TabIndex = 1;
 			this.checkBoxRememberMe.Text = "Remember Me";
 			this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+			// 
+			// panelUserDetails
+			// 
+			this.panelUserDetails.Location = new System.Drawing.Point(0, 0);
+			this.panelUserDetails.Name = "panelUserDetails";
+			this.panelUserDetails.Size = new System.Drawing.Size(548, 130);
+			this.panelUserDetails.TabIndex = 0;
 			// 
 			// flowLayoutPanelBorderPosts
 			// 
@@ -204,12 +223,23 @@
 			this.postsRoundedButton.UseVisualStyleBackColor = false;
 			this.postsRoundedButton.Click += new System.EventHandler(this.postsButton_Click);
 			// 
-			// panelUserDetails
+			// eventBindingSource
 			// 
-			this.panelUserDetails.Location = new System.Drawing.Point(0, 0);
-			this.panelUserDetails.Name = "panelUserDetails";
-			this.panelUserDetails.Size = new System.Drawing.Size(548, 130);
-			this.panelUserDetails.TabIndex = 0;
+			this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
+			// 
+			// albumBindingSource
+			// 
+			this.albumBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Album);
+			// 
+			// imageAlbumPictureBox
+			// 
+			this.imageAlbumPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.albumBindingSource, "ImageAlbum", true));
+			this.imageAlbumPictureBox.Location = new System.Drawing.Point(3, 3);
+			this.imageAlbumPictureBox.Name = "imageAlbumPictureBox";
+			this.imageAlbumPictureBox.Size = new System.Drawing.Size(100, 100);
+			this.imageAlbumPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.imageAlbumPictureBox.TabIndex = 1;
+			this.imageAlbumPictureBox.TabStop = false;
 			// 
 			// HomePanel
 			// 
@@ -226,9 +256,13 @@
 			this.Controls.Add(this.panelHomePageTop);
 			this.Name = "HomePanel";
 			this.Size = new System.Drawing.Size(936, 537);
+			this.flowLayoutPanelAlbums.ResumeLayout(false);
 			this.panelHomePageTop.ResumeLayout(false);
 			this.panelHomePageTop.PerformLayout();
 			this.flowLayoutPanelBorderPosts.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.imageAlbumPictureBox)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -247,5 +281,8 @@
 		private MyFacebookApp.View.RoundedButton friendsRoundedButton;
 		private MyFacebookApp.View.RoundedButton albumsRoundedButton;
 		private MyFacebookApp.View.RoundedButton eventsRoundedButton;
+		private System.Windows.Forms.BindingSource eventBindingSource;
+		private System.Windows.Forms.PictureBox imageAlbumPictureBox;
+		private System.Windows.Forms.BindingSource albumBindingSource;
 	}
 }

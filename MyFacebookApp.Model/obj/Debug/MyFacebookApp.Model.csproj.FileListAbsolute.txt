@@ -10,7 +10,6 @@ C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.Model\bin\Debug\M
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.Model\bin\Debug\MyFacebookApp.Model.pdb
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.Model\bin\Debug\Facebook.dll
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.Model\bin\Debug\FbGraphApiWrapper.dll
-C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.Model\obj\Debug\MyFacebookApp.Model.csprojResolveAssemblyReference.cache
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.Model\obj\Debug\MyFacebookApp.Model.Properties.Resources.resources
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.Model\obj\Debug\MyFacebookApp.Model.csproj.GenerateResource.Cache
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.Model\obj\Debug\MyFacebookApp.Model.dll

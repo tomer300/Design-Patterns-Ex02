@@ -107,9 +107,10 @@ namespace MyFacebookApp.View
 
 					if (usersAlbums != null && usersAlbums.Count > 0)
 					{
-						m_AlbumsManager = new AlbumsManager(r_AppEngine.Albums, flowLayoutPanelAlbums);
-						m_AlbumsManager.AlbumClickedAction += albumsButtonChangeDescription;
-						m_AlbumsManager.DisplayAlbums();
+						//m_AlbumsManager = new AlbumsManager(r_AppEngine.Albums, flowLayoutPanelAlbums);
+						//m_AlbumsManager.AlbumClickedAction += albumsButtonChangeDescription;
+						//m_AlbumsManager.DisplayAlbums();
+						albumBindingSource.DataSource = usersAlbums;
 					}
 					else
 					{
@@ -147,21 +148,11 @@ namespace MyFacebookApp.View
 
 		private void fetchEvents()
 		{
-			FacebookObjectCollection<Event> allEvents;
-
-			listBoxEvents.Items.Clear();
 			try
 			{
-				allEvents = r_AppEngine.Events;
-				if (allEvents != null && allEvents.Count > 0)
-				{
-					listBoxEvents.DisplayMember = "Name";
-					foreach (Event fbEvent in allEvents)
-					{
-						listBoxEvents.Items.Add(fbEvent);
-					}
-				}
-				else
+				eventBindingSource.Clear();
+				eventBindingSource.DataSource = r_AppEngine.Events;
+				if (eventBindingSource.Count == 0)
 				{
 					MessageBox.Show("No Events to retrieve :(");
 				}
