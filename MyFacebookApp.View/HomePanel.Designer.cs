@@ -34,8 +34,12 @@
 			this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
 			this.tableLayoutPanelPosts = new System.Windows.Forms.TableLayoutPanel();
 			this.listBoxEvents = new System.Windows.Forms.ListBox();
+			this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.flowLayoutPanelAlbums = new System.Windows.Forms.FlowLayoutPanel();
 			this.panelHomePageTop = new System.Windows.Forms.Panel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.listBoxLikedPages = new System.Windows.Forms.ListBox();
+			this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
 			this.panelUserDetails = new MyFacebookApp.View.UserDetailsPanel();
 			this.flowLayoutPanelBorderPosts = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,10 +47,10 @@
 			this.albumsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.friendsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.postsRoundedButton = new MyFacebookApp.View.RoundedButton();
-			this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.panelHomePageTop.SuspendLayout();
-			this.flowLayoutPanelBorderPosts.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
+			this.panelHomePageTop.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
+			this.flowLayoutPanelBorderPosts.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// flowLayoutPanelFriends
@@ -91,6 +95,10 @@
 			this.listBoxEvents.TabIndex = 29;
 			this.listBoxEvents.ValueMember = "AttendingUsers";
 			// 
+			// eventBindingSource
+			// 
+			this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
+			// 
 			// flowLayoutPanelAlbums
 			// 
 			this.flowLayoutPanelAlbums.AutoScroll = true;
@@ -104,6 +112,8 @@
 			// panelHomePageTop
 			// 
 			this.panelHomePageTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.panelHomePageTop.Controls.Add(this.label1);
+			this.panelHomePageTop.Controls.Add(this.listBoxLikedPages);
 			this.panelHomePageTop.Controls.Add(this.checkBoxRememberMe);
 			this.panelHomePageTop.Controls.Add(this.panelUserDetails);
 			this.panelHomePageTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -112,12 +122,42 @@
 			this.panelHomePageTop.Size = new System.Drawing.Size(936, 133);
 			this.panelHomePageTop.TabIndex = 24;
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Century Gothic", 8F);
+			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+			this.label1.Location = new System.Drawing.Point(611, 39);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(93, 19);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "Liked Pages:";
+			// 
+			// listBoxLikedPages
+			// 
+			this.listBoxLikedPages.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.listBoxLikedPages.DataSource = this.pageBindingSource;
+			this.listBoxLikedPages.DisplayMember = "Name";
+			this.listBoxLikedPages.Font = new System.Drawing.Font("Century Gothic", 10F);
+			this.listBoxLikedPages.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+			this.listBoxLikedPages.FormattingEnabled = true;
+			this.listBoxLikedPages.ItemHeight = 21;
+			this.listBoxLikedPages.Location = new System.Drawing.Point(615, 61);
+			this.listBoxLikedPages.Name = "listBoxLikedPages";
+			this.listBoxLikedPages.Size = new System.Drawing.Size(318, 67);
+			this.listBoxLikedPages.TabIndex = 2;
+			this.listBoxLikedPages.ValueMember = "AccessToken";
+			// 
+			// pageBindingSource
+			// 
+			this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
+			// 
 			// checkBoxRememberMe
 			// 
 			this.checkBoxRememberMe.AutoSize = true;
 			this.checkBoxRememberMe.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.checkBoxRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.checkBoxRememberMe.Location = new System.Drawing.Point(615, 16);
+			this.checkBoxRememberMe.Location = new System.Drawing.Point(615, 11);
 			this.checkBoxRememberMe.Name = "checkBoxRememberMe";
 			this.checkBoxRememberMe.Size = new System.Drawing.Size(177, 27);
 			this.checkBoxRememberMe.TabIndex = 1;
@@ -217,10 +257,6 @@
 			this.postsRoundedButton.UseVisualStyleBackColor = false;
 			this.postsRoundedButton.Click += new System.EventHandler(this.postsButton_Click);
 			// 
-			// eventBindingSource
-			// 
-			this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
-			// 
 			// HomePanel
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -236,10 +272,11 @@
 			this.Controls.Add(this.panelHomePageTop);
 			this.Name = "HomePanel";
 			this.Size = new System.Drawing.Size(936, 537);
+			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
 			this.panelHomePageTop.ResumeLayout(false);
 			this.panelHomePageTop.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
 			this.flowLayoutPanelBorderPosts.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -259,5 +296,8 @@
 		private MyFacebookApp.View.RoundedButton albumsRoundedButton;
 		private MyFacebookApp.View.RoundedButton eventsRoundedButton;
 		private System.Windows.Forms.BindingSource eventBindingSource;
+		private System.Windows.Forms.ListBox listBoxLikedPages;
+		private System.Windows.Forms.BindingSource pageBindingSource;
+		private System.Windows.Forms.Label label1;
 	}
 }

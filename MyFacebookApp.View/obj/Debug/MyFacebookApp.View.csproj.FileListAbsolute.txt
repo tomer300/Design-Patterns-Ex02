@@ -16,8 +16,6 @@ c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02
 c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.exe
 c:\Tomer\ComputerScience\Year 3\Semester A\Design Patterns\Projects\Ex2\A19 Ex02 TomerTreshchansky 305738130 NivDunay 311250757\MyFacebookApp.View\obj\Debug\MyFacebookApp.pdb
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\bin\Debug\MyFacebookApp.exe.config
-C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\obj\Debug\MyFacebookApp.exe
-C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\obj\Debug\MyFacebookApp.pdb
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\bin\Debug\MyFacebookApp.exe
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\bin\Debug\MyFacebookApp.pdb
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\bin\Debug\Facebook.dll
@@ -32,3 +30,5 @@ C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\obj\Debug\My
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.Properties.Resources.resources
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.UserDetailsPanel.resources
 C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\obj\Debug\MyFacebookApp.View.csproj.GenerateResource.Cache
+C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\obj\Debug\MyFacebookApp.exe
+C:\Users\tomer\Source\Repos\Design-Patterns-Ex02\MyFacebookApp.View\obj\Debug\MyFacebookApp.pdb

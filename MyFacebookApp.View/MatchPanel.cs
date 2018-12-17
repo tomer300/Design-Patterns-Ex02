@@ -94,13 +94,13 @@ namespace MyFacebookApp.View
 				{
 					try
 					{
-						panelUserDetails.SetDataSource(potentialMatch);
 						matchAlbums = potentialMatch.GetAlbums();
 						if (matchAlbums != null)
 						{
 							matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
 							matchAlbumsManager.DisplayAlbums();
 						}
+						panelUserDetails.SetDataSource(potentialMatch);
 					}
 					catch (Exception ex)
 					{

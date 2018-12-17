@@ -16,6 +16,7 @@ namespace MyFacebookApp.View
 			InitializeComponent();
 			r_AppEngine = i_AppEngine;
 			fetchInitialDetails();
+			fetchLikedPages();
 		}
 
 		public bool RememberMeStatus
@@ -65,7 +66,17 @@ namespace MyFacebookApp.View
 			}
 		}
 
-
+		private void fetchLikedPages()
+		{
+			try
+			{
+				pageBindingSource.DataSource = r_AppEngine.LikedPages;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
 		private void fetchInitialDetails()
 		{
 			string profilePictureURL = string.Empty;
@@ -76,11 +87,6 @@ namespace MyFacebookApp.View
 
 			try
 			{
-				profilePictureURL = r_AppEngine.ProfilePicture;
-				firstName = r_AppEngine.FirstName;
-				lastName = r_AppEngine.LastName;
-				cityName = r_AppEngine.City;
-				birthday = r_AppEngine.Birthday;
 				panelUserDetails.SetDataSource(r_AppEngine.LoggedUser);
 			}
 			catch (Exception ex)

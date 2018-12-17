@@ -24,6 +24,7 @@ namespace MyFacebookApp.Model
 				"user_hometown",
 				"user_likes",
 				"user_location",
+				"user_tagged_places",
 				"user_photos",
 				"user_posts");
 

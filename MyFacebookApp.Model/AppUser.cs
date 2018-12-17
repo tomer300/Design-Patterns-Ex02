@@ -52,6 +52,22 @@ namespace MyFacebookApp.Model
 			}
 		}
 
+		internal FacebookObjectCollection<Page> GetLikedPages()
+		{
+			FacebookObjectCollection<Page> pages;
+
+			try
+			{
+				pages= r_LoggedInUser.LikedPages;
+			}
+			catch (Exception)
+			{
+				throw new Facebook.FacebookApiException("Couldn't fetch user's pages.");
+			}
+
+			return pages;
+		}
+
 		public string LastName
 		{
 			get

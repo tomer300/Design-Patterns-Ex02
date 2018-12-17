@@ -25,9 +25,12 @@ namespace MyFacebookApp.Model
 
 		public string Birthday { get { return LoggedUser.Birthday; } }
 
+		/*public FacebookObjectCollection<Page> Pages { get { return LoggedUser.GetPages(); } }*/
+
 		public FacebookObjectCollection<Album> Albums { get { return LoggedUser.GetAlbums(); } }
 
 		public FacebookObjectCollection<Post> Posts { get { return LoggedUser.GetPosts(); } }
+		public FacebookObjectCollection<Page> LikedPages { get { return LoggedUser.GetLikedPages(); } }
 
 		public FacebookObjectCollection<Event> Events { get { return LoggedUser.GetEvents(); } }
 
