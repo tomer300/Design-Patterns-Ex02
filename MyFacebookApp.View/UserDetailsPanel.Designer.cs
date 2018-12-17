@@ -178,7 +178,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.panelUserDetails);
 			this.Name = "UserDetailsPanel";
-			this.Size = new System.Drawing.Size(624, 236);
+			this.Size = new System.Drawing.Size(542, 130);
 			this.panelUserDetails.ResumeLayout(false);
 			this.panelUserDetails.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.profilePicturePictureBox)).EndInit();
