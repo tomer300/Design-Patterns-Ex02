@@ -9,7 +9,7 @@ namespace MyFacebookApp.View
 	public partial class HomePanel : UserControl
 	{
 		private readonly AppEngine	r_AppEngine;
-		private AlbumsManager		m_AlbumsManager;
+		private AlbumsManager m_AlbumsManager;
 
 		public HomePanel(AppEngine i_AppEngine)
 		{
