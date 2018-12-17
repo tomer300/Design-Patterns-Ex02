@@ -94,31 +94,20 @@ namespace MyFacebookApp.View
 				{
 					try
 					{
+						panelUserDetails.SetDataSource(potentialMatch);
 						matchAlbums = potentialMatch.GetAlbums();
 						if (matchAlbums != null)
 						{
 							matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
 							matchAlbumsManager.DisplayAlbums();
 						}
-
-						profilePictureURL = potentialMatch.GetProfilePicture();
-						potentialMatchFirstName = potentialMatch.GetFirstName();
-						potentialMatchLastName = potentialMatch.GetLastName();
-						potentialMatchCity = potentialMatch.GetCity();
-						potentialMatchBirthday = potentialMatch.GetBirthday();
 					}
 					catch (Exception ex)
 					{
 						MessageBox.Show(ex.Message);
 					}
 					finally
-					{
-						panelUserDetails.SetAllUserDetails(
-							profilePictureURL,
-							potentialMatchFirstName,
-							potentialMatchLastName,
-							potentialMatchCity,
-							potentialMatchBirthday);
+					{			
 						panelUserDetails.Visible = true;
 					}
 				}

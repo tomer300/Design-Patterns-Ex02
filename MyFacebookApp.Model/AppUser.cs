@@ -13,7 +13,104 @@ namespace MyFacebookApp.Model
 			r_LoggedInUser = i_LoggedInUser;
 		}
 
-		public string GetProfilePicture()
+		public string ProfilePicture
+		{
+			get
+			{
+				string pictureURL;
+
+				try
+				{
+					pictureURL = r_LoggedInUser.PictureNormalURL;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's profile picture.");
+				}
+
+				return pictureURL;
+
+			}
+		}
+
+		public string FirstName
+		{ 
+			get
+			{
+				string firstName;
+
+				try
+				{
+					firstName = r_LoggedInUser.FirstName;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's first name.");
+				}
+
+				return firstName;
+			}
+		}
+
+		public string LastName
+		{
+			get
+			{
+				string lastName;
+
+				try
+				{
+					lastName = r_LoggedInUser.LastName;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's last name.");
+				}
+
+				return lastName;
+			}
+		}
+
+		public string City
+		{
+			get
+			{
+				string cityName;
+
+				try
+				{
+					cityName = r_LoggedInUser.Location.Name;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's city.");
+				}
+
+				return cityName;
+			}
+		}
+
+		public string Birthday
+		{
+			get
+			{
+				string birthday;
+
+				try
+				{
+					birthday = r_LoggedInUser.Birthday;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's birthday.");
+				}
+
+				return birthday;
+			}
+		}
+
+
+	/*	public string GetProfilePicture()
 		{
 			string pictureURL;
 
@@ -91,7 +188,7 @@ namespace MyFacebookApp.Model
 			}
 
 			return lastName;
-		}
+		}*/
 
 		public FacebookObjectCollection<Album> GetAlbums()
 		{

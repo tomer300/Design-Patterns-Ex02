@@ -5,33 +5,33 @@ namespace MyFacebookApp.Model
 {
 	public class AppEngine
 	{
-		private readonly AppUser		r_LoggedUser;
 		private Job						m_Job;
 		private Match					m_Match;
 
+		public AppUser LoggedUser { get; private set; }
+
 		public AppEngine(AppUser i_AppUser)
 		{
-			r_LoggedUser = i_AppUser;
+			LoggedUser = i_AppUser;
 		}
-		public string m_profilepicture;
 
-		public string ProfilePicture { get { return r_LoggedUser.GetProfilePicture(); } }
+		public string ProfilePicture { get { return LoggedUser.ProfilePicture; } }
 
-		public string FirstName { get { return r_LoggedUser.GetFirstName(); } }
+		public string FirstName { get { return LoggedUser.FirstName; } }
 
-		public string LastName { get { return r_LoggedUser.GetLastName(); } }
+		public string LastName { get { return LoggedUser.LastName; } }
 
-		public string City { get { return r_LoggedUser.GetCity(); } }
+		public string City { get { return LoggedUser.City; } }
 
-		public string Birthday { get { return r_LoggedUser.GetBirthday(); } }
+		public string Birthday { get { return LoggedUser.Birthday; } }
 
-		public FacebookObjectCollection<Album> Albums { get { return r_LoggedUser.GetAlbums(); } }
+		public FacebookObjectCollection<Album> Albums { get { return LoggedUser.GetAlbums(); } }
 
-		public FacebookObjectCollection<Post> Posts { get { return r_LoggedUser.GetPosts(); } }
+		public FacebookObjectCollection<Post> Posts { get { return LoggedUser.GetPosts(); } }
 
-		public FacebookObjectCollection<Event> Events { get { return r_LoggedUser.GetEvents(); } }
+		public FacebookObjectCollection<Event> Events { get { return LoggedUser.GetEvents(); } }
 
-		public FacebookObjectCollection<AppUser> Friends { get { return r_LoggedUser.GetFriends(); } }
+		public FacebookObjectCollection<AppUser> Friends { get { return LoggedUser.GetFriends(); } }
 
 
 		/*public string GetProfilePicture()
@@ -86,10 +86,21 @@ namespace MyFacebookApp.Model
 		{
 			if (m_Match == null)
 			{
-				m_Match = new Match(r_LoggedUser.GetFriends());
+				m_Match = new Match(LoggedUser.GetFriends());
 			}
 
 			return m_Match.FindAMatch(i_ChoseGirls, i_ChoseBoys, i_AgeRange);
 		}
+
+		public FacebookObjectCollection<AppUser> FindHitechWorkersContacts()
+		{
+			if (m_Job == null)
+			{
+				m_Job = new Job(LoggedUser.GetFriends());
+			}
+
+			return m_Job.FindHitechWorkersContacts();
+		}
+
 	}
 }

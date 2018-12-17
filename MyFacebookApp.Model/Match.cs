@@ -107,9 +107,9 @@ namespace MyFacebookApp.Model
 			string[]	chosenRange = i_AgeRange.Split(RANGE_DELIMITER, ABOVE_DELIMITER);
 			bool		iswithinRange = false;
 			int			usersAge;
-			string		matchFullName = string.Format("{0} {1}", i_User.GetFirstName(), i_User.GetLastName());
+			string		matchFullName = string.Format("{0} {1}", i_User.FirstName, i_User.LastName);
 
-			usersAge = calculateAge(i_User.GetBirthday(), matchFullName);
+			usersAge = calculateAge(i_User.Birthday, matchFullName);
 			if (chosenRange.Length == SINGLE_BOUND)
 			{
 				if (usersAge > int.Parse(chosenRange[LOWER_BOUND]))

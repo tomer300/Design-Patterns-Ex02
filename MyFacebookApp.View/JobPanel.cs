@@ -75,8 +75,8 @@ namespace MyFacebookApp.View
 
 			try
 			{
-				contactFirstName = i_CurrentContact.GetFirstName();
-				contactLastName = i_CurrentContact.GetLastName();
+				contactFirstName = i_CurrentContact.FirstName;
+				contactLastName = i_CurrentContact.LastName;
 				workPlace = i_CurrentContact.GetWorkPlace()?.Name;
 			}
 			catch (Exception ex)

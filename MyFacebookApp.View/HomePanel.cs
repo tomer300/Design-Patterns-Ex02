@@ -81,6 +81,7 @@ namespace MyFacebookApp.View
 				lastName = r_AppEngine.LastName;
 				cityName = r_AppEngine.City;
 				birthday = r_AppEngine.Birthday;
+				panelUserDetails.SetDataSource(r_AppEngine.LoggedUser);
 			}
 			catch (Exception ex)
 			{
@@ -88,7 +89,7 @@ namespace MyFacebookApp.View
 			}
 			finally
 			{
-				panelUserDetails.SetAllUserDetails(profilePictureURL, firstName, lastName, cityName, birthday);
+				//panelUserDetails.SetAllUserDetails(profilePictureURL, firstName, lastName, cityName, birthday);
 			}
 		}
 

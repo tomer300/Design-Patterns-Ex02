@@ -36,9 +36,9 @@ namespace MyFacebookApp.View
 
 			try
 			{
-				firstName = i_Friend.GetFirstName();
-				lastName = i_Friend.GetLastName();
-				profilePictureURL = i_Friend.GetProfilePicture();
+				firstName = i_Friend.FirstName;
+				lastName = i_Friend.LastName;
+				profilePictureURL = i_Friend.ProfilePicture;
 			}
 			catch (Exception ex)
 			{
