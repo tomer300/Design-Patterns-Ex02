@@ -5,24 +5,13 @@ using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
 {
-	public partial class MatchPanel : UserControl
+	//add a data member
+	public partial class MatchPanel : AppScreenPanel
 	{
-		private readonly AppEngine r_AppEngine;
-
-		public MatchPanel(AppEngine i_AppEngine)
+		public MatchPanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
-			r_AppEngine = i_AppEngine;
-		}
-
-		public void AddBackToHomeButton(Button i_BackToHomeButton)
-		{
-			Controls.Add(i_BackToHomeButton);
-		}
-
-		public void AddLogoutButton(Button i_LogoutButton)
-		{
-			Controls.Add(i_LogoutButton);
+			fetchInitialDetails();
 		}
 
 		private void findMeAMatchButton_Click(object sender, EventArgs e)
@@ -32,7 +21,7 @@ namespace MyFacebookApp.View
 				FacebookObjectCollection<AppUser> potentialMatches;
 
 				flowLayoutPanelMatchPictures.Controls.Clear();
-				panelUserDetails.Visible = false;
+				panelUserDetailsMatch.Visible = false;
 				try
 				{
 					potentialMatches = r_AppEngine.FindAMatch(
@@ -61,7 +50,6 @@ namespace MyFacebookApp.View
 				MessageBox.Show("Please choose preferred gender.");
 			}
 		}
-
 
 		private bool checkedGenderPreference()
 		{
@@ -100,7 +88,7 @@ namespace MyFacebookApp.View
 							matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
 							matchAlbumsManager.DisplayAlbums();
 						}
-						panelUserDetails.SetDataSource(potentialMatch);
+						panelUserDetailsMatch.SetDataSource(potentialMatch);
 					}
 					catch (Exception ex)
 					{
@@ -108,7 +96,7 @@ namespace MyFacebookApp.View
 					}
 					finally
 					{			
-						panelUserDetails.Visible = true;
+						panelUserDetailsMatch.Visible = true;
 					}
 				}
 			}

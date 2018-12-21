@@ -11,25 +11,14 @@ using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
 {
-	public partial class JobPanel : UserControl
+	public partial class JobPanel : AppScreenPanel
 	{
-		private readonly AppEngine	r_AppEngine;
 		private int					m_LastChosenContactIndex;
 
-		public JobPanel(AppEngine i_AppEngine)
+		public JobPanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
-			r_AppEngine = i_AppEngine;
-		}
-
-		public void AddLogoutButton(Button i_LogoutButton)
-		{
-			Controls.Add(i_LogoutButton);
-		}
-
-		public void AddBackToHomeButton(Button i_BackToHomeButton)
-		{
-			Controls.Add(i_BackToHomeButton);
+			fetchInitialDetails();
 		}
 
 		private void findAJobButton_Click(object sender, EventArgs e)
@@ -151,6 +140,28 @@ namespace MyFacebookApp.View
 						}
 					}
 				}
+			}
+		}
+
+		protected override void fetchInitialDetails()
+		{
+			fetchWorkExperience();
+		}
+
+		private void fetchWorkExperience()
+		{
+			try
+			{
+				workExperienceBindingSource.Clear();
+				workExperienceBindingSource.DataSource = r_AppEngine.WorkExperiences;
+				if (workExperienceBindingSource.Count == 0)
+				{
+					MessageBox.Show("No Work Experiences History.");
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
 			}
 		}
 

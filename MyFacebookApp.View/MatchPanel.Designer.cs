@@ -36,8 +36,9 @@
 			this.labelInterestedIn = new System.Windows.Forms.Label();
 			this.checkBoxBoys = new System.Windows.Forms.CheckBox();
 			this.checkBoxGirls = new System.Windows.Forms.CheckBox();
-			this.panelUserDetails = new MyFacebookApp.View.UserDetailsPanel();
+			this.userDetailsPanelLoggedUser = new MyFacebookApp.View.UserDetailsPanel();
 			this.findAMatchRoundedButton = new MyFacebookApp.View.RoundedButton();
+			this.panelUserDetailsMatch = new MyFacebookApp.View.UserDetailsPanel();
 			this.SuspendLayout();
 			// 
 			// flowLayoutPanelMatchPictures
@@ -45,7 +46,7 @@
 			this.flowLayoutPanelMatchPictures.AutoScroll = true;
 			this.flowLayoutPanelMatchPictures.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.flowLayoutPanelMatchPictures.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.flowLayoutPanelMatchPictures.Location = new System.Drawing.Point(14, 299);
+			this.flowLayoutPanelMatchPictures.Location = new System.Drawing.Point(14, 326);
 			this.flowLayoutPanelMatchPictures.Name = "flowLayoutPanelMatchPictures";
 			this.flowLayoutPanelMatchPictures.Size = new System.Drawing.Size(908, 196);
 			this.flowLayoutPanelMatchPictures.TabIndex = 13;
@@ -55,7 +56,7 @@
 			this.labelBetweenAges.AutoSize = true;
 			this.labelBetweenAges.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelBetweenAges.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.labelBetweenAges.Location = new System.Drawing.Point(71, 165);
+			this.labelBetweenAges.Location = new System.Drawing.Point(33, 174);
 			this.labelBetweenAges.Name = "labelBetweenAges";
 			this.labelBetweenAges.Size = new System.Drawing.Size(157, 23);
 			this.labelBetweenAges.TabIndex = 12;
@@ -75,7 +76,7 @@
             "41-45",
             "46-50",
             "50+"});
-			this.comboBoxAgeRanges.Location = new System.Drawing.Point(75, 198);
+			this.comboBoxAgeRanges.Location = new System.Drawing.Point(37, 207);
 			this.comboBoxAgeRanges.Name = "comboBoxAgeRanges";
 			this.comboBoxAgeRanges.Size = new System.Drawing.Size(208, 31);
 			this.comboBoxAgeRanges.TabIndex = 11;
@@ -86,7 +87,7 @@
 			this.labelInterestedIn.AutoSize = true;
 			this.labelInterestedIn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelInterestedIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.labelInterestedIn.Location = new System.Drawing.Point(71, 62);
+			this.labelInterestedIn.Location = new System.Drawing.Point(33, 71);
 			this.labelInterestedIn.Name = "labelInterestedIn";
 			this.labelInterestedIn.Size = new System.Drawing.Size(136, 23);
 			this.labelInterestedIn.TabIndex = 10;
@@ -97,7 +98,7 @@
 			this.checkBoxBoys.AutoSize = true;
 			this.checkBoxBoys.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.checkBoxBoys.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.checkBoxBoys.Location = new System.Drawing.Point(75, 130);
+			this.checkBoxBoys.Location = new System.Drawing.Point(37, 139);
 			this.checkBoxBoys.Name = "checkBoxBoys";
 			this.checkBoxBoys.Size = new System.Drawing.Size(75, 27);
 			this.checkBoxBoys.TabIndex = 9;
@@ -109,20 +110,19 @@
 			this.checkBoxGirls.AutoSize = true;
 			this.checkBoxGirls.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.checkBoxGirls.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.checkBoxGirls.Location = new System.Drawing.Point(75, 97);
+			this.checkBoxGirls.Location = new System.Drawing.Point(37, 106);
 			this.checkBoxGirls.Name = "checkBoxGirls";
 			this.checkBoxGirls.Size = new System.Drawing.Size(71, 27);
 			this.checkBoxGirls.TabIndex = 8;
 			this.checkBoxGirls.Text = "Girls";
 			this.checkBoxGirls.UseVisualStyleBackColor = true;
 			// 
-			// panelUserDetails
+			// userDetailsPanelLoggedUser
 			// 
-			this.panelUserDetails.Location = new System.Drawing.Point(345, 45);
-			this.panelUserDetails.Name = "panelUserDetails";
-			this.panelUserDetails.Size = new System.Drawing.Size(548, 130);
-			this.panelUserDetails.TabIndex = 15;
-			this.panelUserDetails.Visible = false;
+			this.userDetailsPanelLoggedUser.Location = new System.Drawing.Point(277, 56);
+			this.userDetailsPanelLoggedUser.Name = "userDetailsPanelLoggedUser";
+			this.userDetailsPanelLoggedUser.Size = new System.Drawing.Size(542, 130);
+			this.userDetailsPanelLoggedUser.TabIndex = 17;
 			// 
 			// findAMatchRoundedButton
 			// 
@@ -135,7 +135,7 @@
 			this.findAMatchRoundedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.findAMatchRoundedButton.Font = new System.Drawing.Font("Century Gothic", 12F);
 			this.findAMatchRoundedButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
-			this.findAMatchRoundedButton.Location = new System.Drawing.Point(75, 246);
+			this.findAMatchRoundedButton.Location = new System.Drawing.Point(37, 255);
 			this.findAMatchRoundedButton.Name = "findAMatchRoundedButton";
 			this.findAMatchRoundedButton.Size = new System.Drawing.Size(201, 47);
 			this.findAMatchRoundedButton.TabIndex = 16;
@@ -143,12 +143,21 @@
 			this.findAMatchRoundedButton.UseVisualStyleBackColor = false;
 			this.findAMatchRoundedButton.Click += new System.EventHandler(this.findMeAMatchButton_Click);
 			// 
+			// panelUserDetailsMatch
+			// 
+			this.panelUserDetailsMatch.Location = new System.Drawing.Point(277, 188);
+			this.panelUserDetailsMatch.Name = "panelUserDetailsMatch";
+			this.panelUserDetailsMatch.Size = new System.Drawing.Size(548, 130);
+			this.panelUserDetailsMatch.TabIndex = 15;
+			this.panelUserDetailsMatch.Visible = false;
+			// 
 			// MatchPanel
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.Controls.Add(this.userDetailsPanelLoggedUser);
 			this.Controls.Add(this.findAMatchRoundedButton);
-			this.Controls.Add(this.panelUserDetails);
+			this.Controls.Add(this.panelUserDetailsMatch);
 			this.Controls.Add(this.flowLayoutPanelMatchPictures);
 			this.Controls.Add(this.labelBetweenAges);
 			this.Controls.Add(this.comboBoxAgeRanges);
@@ -170,7 +179,8 @@
 		private System.Windows.Forms.Label labelInterestedIn;
 		private System.Windows.Forms.CheckBox checkBoxBoys;
 		private System.Windows.Forms.CheckBox checkBoxGirls;
-		private MyFacebookApp.View.UserDetailsPanel panelUserDetails;
+		private MyFacebookApp.View.UserDetailsPanel panelUserDetailsMatch;
 		private MyFacebookApp.View.RoundedButton findAMatchRoundedButton;
+		private UserDetailsPanel userDetailsPanelLoggedUser;
 	}
 }

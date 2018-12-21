@@ -73,7 +73,7 @@ namespace MyFacebookApp.View
 		private void album_Click(Album i_ClickedAlbum)
 		{
 			r_PanelToDisplayIn.Controls.Clear();
-			if(r_PanelToDisplayIn.Parent is HomePanel)
+			if(AlbumClickedAction!=null)
 			{
 				AlbumClickedAction.Invoke();
 			}

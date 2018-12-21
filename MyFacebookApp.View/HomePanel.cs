@@ -6,15 +6,13 @@ using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
 {
-	public partial class HomePanel : UserControl
+	public partial class HomePanel : AppScreenPanel
 	{
-		private readonly AppEngine	r_AppEngine;
 		private AlbumsManager m_AlbumsManager;
 
-		public HomePanel(AppEngine i_AppEngine)
+		public HomePanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
-			r_AppEngine = i_AppEngine;
 			fetchInitialDetails();
 			fetchLikedPages();
 		}
@@ -75,27 +73,6 @@ namespace MyFacebookApp.View
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
-			}
-		}
-		private void fetchInitialDetails()
-		{
-			string profilePictureURL = string.Empty;
-			string firstName = string.Empty;
-			string lastName = string.Empty;
-			string cityName = string.Empty;
-			string birthday = string.Empty;
-
-			try
-			{
-				panelUserDetails.SetDataSource(r_AppEngine.LoggedUser);
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message);
-			}
-			finally
-			{
-				//panelUserDetails.SetAllUserDetails(profilePictureURL, firstName, lastName, cityName, birthday);
 			}
 		}
 
@@ -258,9 +235,9 @@ namespace MyFacebookApp.View
 			}
 		}
 
-		public void AddLogoutButton(Button i_LogoutButton)
+		public override void AddLogoutButton(Button i_LogoutButton)
 		{
-			panelHomePageTop.Controls.Add(i_LogoutButton);
+			r_LogoutAttacher.AddLogoutButton(i_LogoutButton, this, panelHomePageTop);
 		}
 	}
 }

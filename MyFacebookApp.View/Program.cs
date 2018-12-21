@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace MyFacebookApp.View
@@ -12,9 +11,9 @@ namespace MyFacebookApp.View
 		[STAThread]
 		static void Main()
 		{
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new FacebookView());
+				Application.EnableVisualStyles();
+				Application.SetCompatibleTextRenderingDefault(false);
+				Application.Run(new FacebookView());
 		}
 	}
 }

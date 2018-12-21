@@ -8,6 +8,5 @@ namespace MyFacebookApp.View
 {
 	public interface ILogoutable
 	{
-		void AddLogoutButton(Button i_LogoutButton);
 	}
 }

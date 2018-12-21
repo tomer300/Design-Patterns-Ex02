@@ -97,7 +97,7 @@ namespace MyFacebookApp.View
 
 		private void findJobButton_Click(object sender, EventArgs e)
 		{
-			panelJob = new JobPanel(m_AppEngine);
+			panelJob = AppPanelFactory.CreateAppPanel(AppPanelFactory.eAppPanel.JOB, m_AppEngine) as JobPanel;
 			panelJob.AddLogoutButton(logoutButton);
 			panelJob.AddBackToHomeButton(backToHomeButton);
 			panelMain.Controls.Clear();
@@ -126,7 +126,7 @@ namespace MyFacebookApp.View
 
 		private void createHomePanel()
 		{
-			panelHomePage = new HomePanel(m_AppEngine);
+			panelHomePage = AppPanelFactory.CreateAppPanel(AppPanelFactory.eAppPanel.HOME, m_AppEngine) as HomePanel;
 			panelHomePage.AddLogoutButton(logoutButton);
 			this.panelMain.Controls.Clear();
 			this.panelMain.Controls.Add(this.panelHomePage);
@@ -150,7 +150,7 @@ namespace MyFacebookApp.View
 
 		private void findAMatchAppButton_Click(object sender, EventArgs e)
 		{
-			panelMatch = new MatchPanel(m_AppEngine);
+			panelMatch = AppPanelFactory.CreateAppPanel(AppPanelFactory.eAppPanel.MATCH, m_AppEngine) as MatchPanel;
 			panelMatch.AddLogoutButton(logoutButton);
 			panelMatch.AddBackToHomeButton(backToHomeButton);
 			panelMain.Controls.Clear();

@@ -36,6 +36,8 @@ namespace MyFacebookApp.Model
 
 		public FacebookObjectCollection<AppUser> Friends { get { return LoggedUser.GetFriends(); } }
 
+		public WorkExperience[] WorkExperiences { get { return LoggedUser.GetWorkExperiences(); } }
+
 
 		/*public string GetProfilePicture()
 		{

@@ -47,7 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractControlDescriptionProvider.cs" />
     <Compile Include="AlbumsManager.cs" />
+    <Compile Include="AppPanelFactory.cs" />
+    <Compile Include="AppScreenPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AppScreenPanel.Designer.cs">
+      <DependentUpon>AppScreenPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailedProfilePicture.cs" />
     <Compile Include="FacebookView.cs">
       <SubType>Form</SubType>
@@ -57,6 +65,7 @@
     </Compile>
     <Compile Include="FriendsDisplayer.cs" />
     <Compile Include="IBackable.cs" />
+    <Compile Include="LogoutAttach.cs" />
     <Compile Include="MatchPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,15 +99,19 @@
     </Compile>
     <EmbeddedResource Include="FacebookView.resx">
       <DependentUpon>FacebookView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MatchPanel.resx">
       <DependentUpon>MatchPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="JobPanel.resx">
       <DependentUpon>JobPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePanel.resx">
       <DependentUpon>HomePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,6 +129,8 @@
     <None Include="app.config" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Event.datasource" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Page.datasource" />
+    <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.User.datasource" />
+    <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.WorkExperience.datasource" />
     <None Include="Properties\DataSources\MyFacebookApp.Model.AppUser.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

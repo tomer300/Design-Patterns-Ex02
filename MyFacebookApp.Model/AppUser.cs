@@ -1,6 +1,7 @@
 ﻿using System;
 using FacebookWrapper.ObjectModel;
 using static FacebookWrapper.ObjectModel.User;
+using System.Drawing;
 
 namespace MyFacebookApp.Model
 {
@@ -52,22 +53,6 @@ namespace MyFacebookApp.Model
 			}
 		}
 
-		internal FacebookObjectCollection<Page> GetLikedPages()
-		{
-			FacebookObjectCollection<Page> pages;
-
-			try
-			{
-				pages= r_LoggedInUser.LikedPages;
-			}
-			catch (Exception)
-			{
-				throw new Facebook.FacebookApiException("Couldn't fetch user's pages.");
-			}
-
-			return pages;
-		}
-
 		public string LastName
 		{
 			get
@@ -96,6 +81,9 @@ namespace MyFacebookApp.Model
 				try
 				{
 					cityName = r_LoggedInUser.Location.Name;
+					/*31.97102
+					double distance = (new Point((int)r_LoggedInUser.Location.Location.Longitude, (int)r_LoggedInUser.Location.Location.Latitude) - new Point((int)r_LoggedInUser.Location.Location.Longitude, (int)r_LoggedInUser.Location.Location.Latitude)).LengthSquared
+						Point..tract(new Point((int)r_LoggedInUser.Location.Location.Longitude, (int)r_LoggedInUser.Location.Location.Latitude), new Point((int)r_LoggedInUser.Location.Location.Longitude, (int)r_LoggedInUser.Location.Location.Latitude)).Length;*/
 				}
 				catch (Exception)
 				{
@@ -125,86 +113,101 @@ namespace MyFacebookApp.Model
 			}
 		}
 
-
-	/*	public string GetProfilePicture()
+		internal FacebookObjectCollection<Page> GetLikedPages()
 		{
-			string pictureURL;
+			FacebookObjectCollection<Page> pages;
 
 			try
 			{
-				pictureURL = r_LoggedInUser.PictureNormalURL;
+				pages = r_LoggedInUser.LikedPages;
 			}
 			catch (Exception)
 			{
-				throw new Facebook.FacebookApiException("Couldn't fetch user's profile picture.");
+				throw new Facebook.FacebookApiException("Couldn't fetch user's pages.");
 			}
 
-			return pictureURL;
+			return pages;
 		}
 
-		public string GetCity()
-		{
-			string cityName;
-
-			try
+		/*	public string GetProfilePicture()
 			{
-				cityName = r_LoggedInUser.Location.Name;
-			}
-			catch (Exception)
-			{
-				throw new Facebook.FacebookApiException("Couldn't fetch user's city.");
-			}
+				string pictureURL;
 
-			return cityName;
-		}
+				try
+				{
+					pictureURL = r_LoggedInUser.PictureNormalURL;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's profile picture.");
+				}
 
-		public string GetBirthday()
-		{
-			string birthday;
-
-			try
-			{
-				birthday = r_LoggedInUser.Birthday;
-			}
-			catch (Exception)
-			{
-				throw new Facebook.FacebookApiException("Couldn't fetch user's birthday.");
+				return pictureURL;
 			}
 
-			return birthday;
-		}
-
-		public string GetFirstName()
-		{
-			string firstName;
-
-			try
+			public string GetCity()
 			{
-				firstName = r_LoggedInUser.FirstName;
-			}
-			catch (Exception)
-			{
-				throw new Facebook.FacebookApiException("Couldn't fetch user's first name.");
-			}
+				string cityName;
 
-			return firstName;
-		}
+				try
+				{
+					cityName = r_LoggedInUser.Location.Name;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's city.");
+				}
 
-		public string GetLastName()
-		{
-			string lastName;
-
-			try
-			{
-				lastName = r_LoggedInUser.LastName;
-			}
-			catch (Exception)
-			{
-				throw new Facebook.FacebookApiException("Couldn't fetch user's last name.");
+				return cityName;
 			}
 
-			return lastName;
-		}*/
+			public string GetBirthday()
+			{
+				string birthday;
+
+				try
+				{
+					birthday = r_LoggedInUser.Birthday;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's birthday.");
+				}
+
+				return birthday;
+			}
+
+			public string GetFirstName()
+			{
+				string firstName;
+
+				try
+				{
+					firstName = r_LoggedInUser.FirstName;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's first name.");
+				}
+
+				return firstName;
+			}
+
+			public string GetLastName()
+			{
+				string lastName;
+
+				try
+				{
+					lastName = r_LoggedInUser.LastName;
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's last name.");
+				}
+
+				return lastName;
+			}*/
 
 		public FacebookObjectCollection<Album> GetAlbums()
 		{
@@ -314,6 +317,23 @@ namespace MyFacebookApp.Model
 
 			return workPlace;
 		}
+
+		public WorkExperience[] GetWorkExperiences()
+		{
+			WorkExperience[] allWorks = null;
+
+			try
+			{
+				allWorks = r_LoggedInUser.WorkExperiences;
+			}
+			catch (Exception)
+			{
+				throw new Facebook.FacebookApiException("Couldn't fetch user's work experiences.");
+			}
+
+			return allWorks;
+		}
+
 
 		internal eRelationshipStatus? GetRelationshipStatus()
 		{
