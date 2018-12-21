@@ -21,7 +21,7 @@ namespace MyFacebookApp.View
 				FacebookObjectCollection<AppUser> potentialMatches;
 
 				flowLayoutPanelMatchPictures.Controls.Clear();
-				panelUserDetailsMatch.Visible = false;
+				setLabelsVisibility(false);
 				try
 				{
 					potentialMatches = r_AppEngine.FindAMatch(
@@ -74,6 +74,7 @@ namespace MyFacebookApp.View
 			string								potentialMatchLastName = string.Empty;
 			string								potentialMatchCity = string.Empty;
 			string								potentialMatchBirthday = string.Empty;
+			string								distanceToMatch = string.Empty;
 
 			if (appUserEventArgs != null)
 			{
@@ -89,17 +90,42 @@ namespace MyFacebookApp.View
 							matchAlbumsManager.DisplayAlbums();
 						}
 						panelUserDetailsMatch.SetDataSource(potentialMatch);
+						double distance = r_AppEngine.DistanceBetweenTwoCoordinatesAdapter.CalculateDistance(
+							r_AppEngine.LoggedUser.Location.Latitude,
+							r_AppEngine.LoggedUser.Location.Longitude,
+							potentialMatch.Location.Latitude,
+							potentialMatch.Location.Longitude
+							);
+						/*double? x1 = 32.0866296535;
+						double? y1 = 34.8851297928;
+						double? x2 = 31.97102;
+						double? y2 = 34.78939;
+						double distance = distanceAdapter.CalculateDistance(
+							x1,
+							y1,
+							x2,
+							y2
+							);*/
+						distanceToMatch = string.Format("{0:F1} km", distance);
+						labelDistanceToInfo.Text = distanceToMatch;
 					}
 					catch (Exception ex)
 					{
 						MessageBox.Show(ex.Message);
 					}
 					finally
-					{			
-						panelUserDetailsMatch.Visible = true;
+					{
+						setLabelsVisibility(true);
 					}
 				}
 			}
+		}
+
+		private void setLabelsVisibility(bool i_IsVisible)
+		{
+			labelDistanceTo.Visible = i_IsVisible;
+			labelDistanceToInfo.Visible = i_IsVisible;
+			panelUserDetailsMatch.Visible = i_IsVisible;
 		}
 	}
 }

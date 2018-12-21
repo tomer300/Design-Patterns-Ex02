@@ -81,9 +81,6 @@ namespace MyFacebookApp.Model
 				try
 				{
 					cityName = r_LoggedInUser.Location.Name;
-					/*31.97102
-					double distance = (new Point((int)r_LoggedInUser.Location.Location.Longitude, (int)r_LoggedInUser.Location.Location.Latitude) - new Point((int)r_LoggedInUser.Location.Location.Longitude, (int)r_LoggedInUser.Location.Location.Latitude)).LengthSquared
-						Point..tract(new Point((int)r_LoggedInUser.Location.Location.Longitude, (int)r_LoggedInUser.Location.Location.Latitude), new Point((int)r_LoggedInUser.Location.Location.Longitude, (int)r_LoggedInUser.Location.Location.Latitude)).Length;*/
 				}
 				catch (Exception)
 				{
@@ -93,7 +90,28 @@ namespace MyFacebookApp.Model
 				return cityName;
 			}
 		}
+		public Location Location
+		{
+			get
+			{
+				Location location;
 
+				try
+				{
+					location = r_LoggedInUser.Location.Location;
+					if(location == null)
+					{
+						throw new Facebook.FacebookApiException("Couldn't fetch user's Location.");
+					}
+				}
+				catch (Exception)
+				{
+					throw new Facebook.FacebookApiException("Couldn't fetch user's Location.");
+				}
+
+				return location;
+			}
+		}
 		public string Birthday
 		{
 			get

@@ -77,15 +77,22 @@ namespace MyFacebookApp.View
 			{
 				AlbumClickedAction.Invoke();
 			}
+			try {
 
-			foreach (Photo currentPhoto in i_ClickedAlbum.Photos)
-			{
-				PictureWrapper	currentPictureWrapper = new PictureWrapper(currentPhoto.PictureNormalURL);
-				PictureBox		currentPhotoPictureBox = currentPictureWrapper.PictureBox;
+				foreach (Photo currentPhoto in i_ClickedAlbum.Photos)
+				{
+					PictureWrapper currentPictureWrapper = new PictureWrapper(currentPhoto.PictureNormalURL);
+					PictureBox currentPhotoPictureBox = currentPictureWrapper.PictureBox;
 
-				r_PanelToDisplayIn.Controls.Add(currentPhotoPictureBox);
+					r_PanelToDisplayIn.Controls.Add(currentPhotoPictureBox);
+				}
+
 			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			
 		}
 	}
 }
-//maybe holding a collection of users albums.

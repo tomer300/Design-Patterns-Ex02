@@ -39,6 +39,8 @@
 			this.userDetailsPanelLoggedUser = new MyFacebookApp.View.UserDetailsPanel();
 			this.findAMatchRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.panelUserDetailsMatch = new MyFacebookApp.View.UserDetailsPanel();
+			this.labelDistanceTo = new System.Windows.Forms.Label();
+			this.labelDistanceToInfo = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// flowLayoutPanelMatchPictures
@@ -121,7 +123,7 @@
 			// 
 			this.userDetailsPanelLoggedUser.Location = new System.Drawing.Point(277, 56);
 			this.userDetailsPanelLoggedUser.Name = "userDetailsPanelLoggedUser";
-			this.userDetailsPanelLoggedUser.Size = new System.Drawing.Size(542, 130);
+			this.userDetailsPanelLoggedUser.Size = new System.Drawing.Size(542, 110);
 			this.userDetailsPanelLoggedUser.TabIndex = 17;
 			// 
 			// findAMatchRoundedButton
@@ -145,16 +147,42 @@
 			// 
 			// panelUserDetailsMatch
 			// 
-			this.panelUserDetailsMatch.Location = new System.Drawing.Point(277, 188);
+			this.panelUserDetailsMatch.Location = new System.Drawing.Point(277, 192);
 			this.panelUserDetailsMatch.Name = "panelUserDetailsMatch";
-			this.panelUserDetailsMatch.Size = new System.Drawing.Size(548, 130);
+			this.panelUserDetailsMatch.Size = new System.Drawing.Size(548, 110);
 			this.panelUserDetailsMatch.TabIndex = 15;
 			this.panelUserDetailsMatch.Visible = false;
+			// 
+			// labelDistanceTo
+			// 
+			this.labelDistanceTo.AutoSize = true;
+			this.labelDistanceTo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelDistanceTo.ForeColor = System.Drawing.Color.Salmon;
+			this.labelDistanceTo.Location = new System.Drawing.Point(431, 174);
+			this.labelDistanceTo.Name = "labelDistanceTo";
+			this.labelDistanceTo.Size = new System.Drawing.Size(133, 23);
+			this.labelDistanceTo.TabIndex = 18;
+			this.labelDistanceTo.Text = "Distance To: ";
+			this.labelDistanceTo.Visible = false;
+			// 
+			// labelDistanceToInfo
+			// 
+			this.labelDistanceToInfo.AutoSize = true;
+			this.labelDistanceToInfo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelDistanceToInfo.ForeColor = System.Drawing.Color.Salmon;
+			this.labelDistanceToInfo.Location = new System.Drawing.Point(570, 174);
+			this.labelDistanceToInfo.Name = "labelDistanceToInfo";
+			this.labelDistanceToInfo.Size = new System.Drawing.Size(49, 23);
+			this.labelDistanceToInfo.TabIndex = 19;
+			this.labelDistanceToInfo.Text = "N/A";
+			this.labelDistanceToInfo.Visible = false;
 			// 
 			// MatchPanel
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.Controls.Add(this.labelDistanceToInfo);
+			this.Controls.Add(this.labelDistanceTo);
 			this.Controls.Add(this.userDetailsPanelLoggedUser);
 			this.Controls.Add(this.findAMatchRoundedButton);
 			this.Controls.Add(this.panelUserDetailsMatch);
@@ -182,5 +210,7 @@
 		private MyFacebookApp.View.UserDetailsPanel panelUserDetailsMatch;
 		private MyFacebookApp.View.RoundedButton findAMatchRoundedButton;
 		private UserDetailsPanel userDetailsPanelLoggedUser;
+		private System.Windows.Forms.Label labelDistanceTo;
+		private System.Windows.Forms.Label labelDistanceToInfo;
 	}
 }
