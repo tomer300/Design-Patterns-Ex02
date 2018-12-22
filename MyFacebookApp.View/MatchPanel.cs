@@ -7,7 +7,7 @@ namespace MyFacebookApp.View
 {
 	public partial class MatchPanel : AppScreenPanel
 	{
-		public MatchPanel(AppEngine i_AppEngine) : base(i_AppEngine)
+		internal MatchPanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
 			FacebookView.CreateThread(fetchInitialDetails);

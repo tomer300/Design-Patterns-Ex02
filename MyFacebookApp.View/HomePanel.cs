@@ -10,7 +10,7 @@ namespace MyFacebookApp.View
 	{
 		private AlbumsManager m_AlbumsManager;
 
-		public HomePanel(AppEngine i_AppEngine) : base(i_AppEngine)
+		internal HomePanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
 			FacebookView.CreateThread(fetchInitialDetails);

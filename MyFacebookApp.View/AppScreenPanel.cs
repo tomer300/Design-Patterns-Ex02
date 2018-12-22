@@ -11,7 +11,7 @@ namespace MyFacebookApp.View
 		protected readonly AppEngine	r_AppEngine;
 		protected readonly LogoutAttach r_LogoutAttacher;
 
-		public AppScreenPanel(AppEngine i_AppEngine)
+		internal AppScreenPanel(AppEngine i_AppEngine)
 		{
 			InitializeComponent();
 			r_AppEngine = i_AppEngine;

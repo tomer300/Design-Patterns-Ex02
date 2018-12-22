@@ -15,7 +15,7 @@ namespace MyFacebookApp.View
 	{
 		private int					m_LastChosenContactIndex;
 
-		public JobPanel(AppEngine i_AppEngine) : base(i_AppEngine)
+		internal JobPanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
 			FacebookView.CreateThread(fetchInitialDetails);
