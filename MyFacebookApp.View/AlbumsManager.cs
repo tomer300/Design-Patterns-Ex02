@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
+using Facebook;
 
 namespace MyFacebookApp.View
 {
@@ -19,8 +21,10 @@ namespace MyFacebookApp.View
 		internal void DisplayAlbums()
 		{	
 			string albumPictureURL = string.Empty;
+			bool hasShownExceptionMessage = false;
 
-			r_PanelToDisplayIn.Controls.Clear();
+			r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Clear()));
+
 			foreach (Album currentAlbum in r_AlbumsOfUser)
 			{
 				if (currentAlbum.Count > 0)
@@ -38,13 +42,27 @@ namespace MyFacebookApp.View
 					}
 					finally
 					{
-						currentAlbumPictureWrapper = new PictureWrapper(albumPictureURL);
-						currentAlbumPictureBox = currentAlbumPictureWrapper.PictureBox;
-						currentAlbumPictureBox.Cursor = Cursors.Hand;
-						currentAlbumPictureBox.MouseEnter += new EventHandler(album_Enter);
-						currentAlbumPictureBox.MouseLeave += new EventHandler(album_Leave);
-						currentAlbumPictureBox.Click += (sender, e) => album_Click(currentAlbum);
-						r_PanelToDisplayIn.Controls.Add(currentAlbumPictureBox);
+						try
+						{
+							currentAlbumPictureWrapper = new PictureWrapper(albumPictureURL);
+							currentAlbumPictureBox = currentAlbumPictureWrapper.PictureBox;
+							currentAlbumPictureBox.Cursor = Cursors.Hand;
+							currentAlbumPictureBox.MouseEnter += new EventHandler(album_Enter);
+							currentAlbumPictureBox.MouseLeave += new EventHandler(album_Leave);
+							currentAlbumPictureBox.Click += (sender, e) =>
+							{
+								FacebookView.CreateThread(() => album_Click(currentAlbum));
+							};
+							r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Add(currentAlbumPictureBox)));
+						}
+						catch (FacebookApiLimitException ex)
+						{
+							if (!hasShownExceptionMessage)
+							{
+								hasShownExceptionMessage = true;
+								MessageBox.Show(ex.Message);
+							}
+						}
 					}
 				}
 			}
@@ -56,7 +74,7 @@ namespace MyFacebookApp.View
 
 			if (albumLeft != null)
 			{
-				albumLeft.BorderStyle = BorderStyle.None;
+				albumLeft.Invoke(new Action(() => albumLeft.BorderStyle = BorderStyle.None));			
 			}
 		}
 
@@ -66,14 +84,16 @@ namespace MyFacebookApp.View
 
 			if (albumHovered != null)
 			{
-				albumHovered.BorderStyle = BorderStyle.Fixed3D;
+				albumHovered.Invoke(new Action(() => albumHovered.BorderStyle = BorderStyle.Fixed3D));			
 			}
 		}
 
 		private void album_Click(Album i_ClickedAlbum)
 		{
-			r_PanelToDisplayIn.Controls.Clear();
-			if(AlbumClickedAction!=null)
+			bool hasShownExceptionMessage = false;
+
+			r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Clear()));
+			if (AlbumClickedAction != null)
 			{
 				AlbumClickedAction.Invoke();
 			}
@@ -81,10 +101,21 @@ namespace MyFacebookApp.View
 
 				foreach (Photo currentPhoto in i_ClickedAlbum.Photos)
 				{
-					PictureWrapper currentPictureWrapper = new PictureWrapper(currentPhoto.PictureNormalURL);
-					PictureBox currentPhotoPictureBox = currentPictureWrapper.PictureBox;
+					try
+					{
+						PictureWrapper currentPictureWrapper = new PictureWrapper(currentPhoto.PictureNormalURL);
+						PictureBox currentPhotoPictureBox = currentPictureWrapper.PictureBox;
+						r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Add(currentPhotoPictureBox)));
+					}
+					catch(FacebookApiLimitException ex)
+					{
+						if (!hasShownExceptionMessage)
+						{
+							hasShownExceptionMessage = true;
+							MessageBox.Show(ex.Message);
+						}
+					}
 
-					r_PanelToDisplayIn.Controls.Add(currentPhotoPictureBox);
 				}
 
 			}

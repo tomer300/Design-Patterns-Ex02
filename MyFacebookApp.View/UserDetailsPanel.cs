@@ -19,7 +19,14 @@ namespace MyFacebookApp.View
 
 		public void SetDataSource(AppUser i_User)
 		{
-			appUserBindingSource.DataSource = i_User;
+			if (!this.InvokeRequired)
+			{
+				appUserBindingSource.DataSource = i_User;
+			}
+			else
+			{
+				this.Invoke(new Action(() => appUserBindingSource.DataSource = i_User));
+			}
 		}
 	}
 }

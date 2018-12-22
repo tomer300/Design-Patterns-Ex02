@@ -11,7 +11,7 @@ namespace MyFacebookApp.View
 		public MatchPanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
-			fetchInitialDetails();
+			FacebookView.CreateThread(fetchInitialDetails);
 		}
 
 		private void findMeAMatchButton_Click(object sender, EventArgs e)
@@ -20,7 +20,7 @@ namespace MyFacebookApp.View
 			{
 				FacebookObjectCollection<AppUser> potentialMatches;
 
-				flowLayoutPanelMatchPictures.Controls.Clear();
+				flowLayoutPanelMatchPictures.Invoke(new Action(() => flowLayoutPanelMatchPictures.Controls.Clear()));
 				setLabelsVisibility(false);
 				try
 				{
@@ -32,8 +32,7 @@ namespace MyFacebookApp.View
 					{
 						FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.Friends, flowLayoutPanelMatchPictures);
 						displayer.FriendOnClickDelegate += match_Click;
-						displayer.Display();
-
+						FacebookView.CreateThread(displayer.Display);
 					}
 					else
 					{
@@ -87,7 +86,7 @@ namespace MyFacebookApp.View
 						if (matchAlbums != null)
 						{
 							matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
-							matchAlbumsManager.DisplayAlbums();
+							FacebookView.CreateThread(matchAlbumsManager.DisplayAlbums);
 						}
 						panelUserDetailsMatch.SetDataSource(potentialMatch);
 						double distance = r_AppEngine.DistanceBetweenTwoCoordinatesAdapter.CalculateDistance(
@@ -96,18 +95,9 @@ namespace MyFacebookApp.View
 							potentialMatch.Location.Latitude,
 							potentialMatch.Location.Longitude
 							);
-						/*double? x1 = 32.0866296535;
-						double? y1 = 34.8851297928;
-						double? x2 = 31.97102;
-						double? y2 = 34.78939;
-						double distance = distanceAdapter.CalculateDistance(
-							x1,
-							y1,
-							x2,
-							y2
-							);*/
+
 						distanceToMatch = string.Format("{0:F1} km", distance);
-						labelDistanceToInfo.Text = distanceToMatch;
+						labelDistanceToInfo.Invoke(new Action(() => labelDistanceToInfo.Text = distanceToMatch));
 					}
 					catch (Exception ex)
 					{
@@ -123,9 +113,9 @@ namespace MyFacebookApp.View
 
 		private void setLabelsVisibility(bool i_IsVisible)
 		{
-			labelDistanceTo.Visible = i_IsVisible;
-			labelDistanceToInfo.Visible = i_IsVisible;
-			panelUserDetailsMatch.Visible = i_IsVisible;
+			labelDistanceTo.Invoke(new Action(() => labelDistanceTo.Visible = i_IsVisible));
+			labelDistanceToInfo.Invoke(new Action(() => labelDistanceToInfo.Visible = i_IsVisible));
+			panelUserDetailsMatch.Invoke(new Action(() => panelUserDetailsMatch.Visible = i_IsVisible));
 		}
 	}
 }

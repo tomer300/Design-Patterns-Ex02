@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MyFacebookApp.Model;
+using System.Threading;
 
 namespace MyFacebookApp.View
 {
@@ -13,6 +14,13 @@ namespace MyFacebookApp.View
 			InitializeComponent();
 			createLogoutAndBackButtons();
  		}
+
+		internal static void CreateThread(ThreadStart i_Method)
+		{
+			Thread thread = new Thread(i_Method);
+			thread.IsBackground = true;
+			thread.Start();
+		}
 
 		private void createLogoutAndBackButtons()
 		{
@@ -68,7 +76,7 @@ namespace MyFacebookApp.View
 		{
 			this.Location = AppSettings.Settings.Location;
 			this.panelHomePage.RememberMeStatus = AppSettings.Settings.RememberUser;
-			panelHomePage.ShowAllDetails();
+			FacebookView.CreateThread(panelHomePage.ShowAllDetails);
 		}
 
 		protected override void OnFormClosing(FormClosingEventArgs e)

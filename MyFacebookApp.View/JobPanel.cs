@@ -18,7 +18,7 @@ namespace MyFacebookApp.View
 		public JobPanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
-			fetchInitialDetails();
+			FacebookView.CreateThread(fetchInitialDetails);
 		}
 
 		private void findAJobButton_Click(object sender, EventArgs e)
@@ -33,14 +33,16 @@ namespace MyFacebookApp.View
 				hitechWorkerContacts = r_AppEngine.Friends; //r_AppEngine.FindHitechWorkersContacts();
 				if (hitechWorkerContacts != null && hitechWorkerContacts.Count > 0)
 				{
-					foreach (AppUser currentContact in hitechWorkerContacts)
-					{
-						addContactToListBoxJobs(currentContact, ref hasShownMessageBox);
-					}
+					FacebookView.CreateThread(() => {
+						foreach (AppUser currentContact in hitechWorkerContacts)
+						{
+							addContactToListBoxJobs(currentContact, ref hasShownMessageBox);
+						}
+					});
 					FriendsDisplayer displayer = new FriendsDisplayer(hitechWorkerContacts, flowLayoutPanelContactPhotos);
 					displayer.FriendOnClickDelegate += contactPic_Click;
-					displayer.Display();
 
+					FacebookView.CreateThread(displayer.Display);
 				}
 				else
 				{
@@ -80,10 +82,14 @@ namespace MyFacebookApp.View
 			{
 
 				contactFullName = string.Format("{0} {1}", contactFirstName, contactLastName);
-				listBoxJobs.Items.Add(
-					new ContactItem(new KeyValuePair<string, string>(
-						contactFullName,
-						string.Format("{0} works at", contactFullName, workPlace))));
+				listBoxJobs.Invoke(new Action(() =>
+				{
+					listBoxJobs.Items.Add(
+										new ContactItem(new KeyValuePair<string, string>(
+										contactFullName,
+										string.Format("{0} works at", contactFullName, workPlace))));
+				}));
+
 			}
 		}
 
@@ -135,7 +141,7 @@ namespace MyFacebookApp.View
 					{
 						if (currentContactInfo.Contact.Key.Equals(contactName))
 						{
-							listBoxJobs.SetSelected(listBoxJobs.Items.IndexOf(currentItem), true);
+							listBoxJobs.Invoke(new Action(() => listBoxJobs.SetSelected(listBoxJobs.Items.IndexOf(currentItem), true)));
 							break;
 						}
 					}
@@ -152,8 +158,17 @@ namespace MyFacebookApp.View
 		{
 			try
 			{
-				workExperienceBindingSource.Clear();
-				workExperienceBindingSource.DataSource = r_AppEngine.WorkExperiences;
+				WorkExperience[] workExperiences = r_AppEngine.WorkExperiences;
+
+				if (!listBoxUserWorkExperience.InvokeRequired)
+				{
+					workExperienceBindingSource.DataSource = workExperiences;
+				}
+				else
+				{
+					listBoxUserWorkExperience.Invoke(new Action(() => workExperienceBindingSource.DataSource = workExperiences));
+				}
+
 				if (workExperienceBindingSource.Count == 0)
 				{
 					MessageBox.Show("No Work Experiences History.");

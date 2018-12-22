@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using MyFacebookApp.Model;
+using System.Threading;
+using Facebook;
 
 namespace MyFacebookApp.View
 {
@@ -13,8 +15,8 @@ namespace MyFacebookApp.View
 		public HomePanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{
 			InitializeComponent();
-			fetchInitialDetails();
-			fetchLikedPages();
+			FacebookView.CreateThread(fetchInitialDetails);
+			FacebookView.CreateThread(fetchLikedPages);
 		}
 
 		public bool RememberMeStatus
@@ -32,17 +34,17 @@ namespace MyFacebookApp.View
 
 		private void friendsButton_Click(object sender, EventArgs e)
 		{
-			fetchFriends();
+			FacebookView.CreateThread(fetchFriends);
 		}
 
 		internal void ShowAllDetails()
 		{
 			try
 			{
-				displayAlbums();
-				fetchPosts();
-				fetchEvents();
-				fetchFriends();
+				FacebookView.CreateThread(displayAlbums);
+				FacebookView.CreateThread(fetchPosts);
+				FacebookView.CreateThread(fetchFriends);
+				FacebookView.CreateThread(fetchEvents);
 			}
 			catch (Exception ex)
 			{
@@ -52,9 +54,9 @@ namespace MyFacebookApp.View
 
 		private void fetchFriends()
 		{
-			flowLayoutPanelFriends.Controls.Clear();
+			flowLayoutPanelFriends.Invoke(new Action(() => flowLayoutPanelFriends.Controls.Clear()));
 			try
-			{
+			{	
 				FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.Friends, flowLayoutPanelFriends);
 				displayer.Display();
 			}
@@ -68,7 +70,16 @@ namespace MyFacebookApp.View
 		{
 			try
 			{
-				pageBindingSource.DataSource = r_AppEngine.LikedPages;
+				FacebookObjectCollection<Page> likedPages = r_AppEngine.LikedPages;
+				if (!listBoxLikedPages.InvokeRequired)
+				{
+					pageBindingSource.DataSource = likedPages;
+
+				}
+				else
+				{
+					listBoxLikedPages.Invoke(new Action(() => pageBindingSource.DataSource = likedPages));
+				}
 			}
 			catch (Exception ex)
 			{
@@ -78,7 +89,7 @@ namespace MyFacebookApp.View
 
 		private void albumsButton_Click(object sender, EventArgs e)
 		{
-			displayAlbums();
+			FacebookView.CreateThread(displayAlbums);
 		}
 
 		private void displayAlbums()
@@ -107,51 +118,55 @@ namespace MyFacebookApp.View
 			}
 			else
 			{
-				albumsRoundedButton.Text = "Albums";
+				albumsRoundedButton.Invoke(new Action(() => albumsRoundedButton.Text = "Albums"));
 				m_AlbumsManager.DisplayAlbums();
 			}
 		}
 
 		private void albumsButtonChangeDescription()
 		{
-			albumsRoundedButton.Text = "Back To Albums";
+			albumsRoundedButton.Invoke(new Action(() => albumsRoundedButton.Text = "Back To Albums"));
 		}
 
 		private void eventsButton_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				fetchEvents();
-			}
-			catch (Exception exEvents)
-			{
-				MessageBox.Show(string.Format("Error! could'nt fetch events - {0}.", exEvents.Message));
-			}
+			FacebookView.CreateThread(fetchEvents);
 		}
 
 		private void fetchEvents()
 		{
+
 			try
 			{
-				eventBindingSource.Clear();
-				eventBindingSource.DataSource = r_AppEngine.Events;
+				FacebookObjectCollection<Event> events = r_AppEngine.Events;
+
+				if (!listBoxEvents.InvokeRequired)
+				{
+					eventBindingSource.DataSource = events;
+				}
+				else
+				{
+					listBoxEvents.Invoke(new Action(() => eventBindingSource.DataSource = events));
+				}
+
 				if (eventBindingSource.Count == 0)
 				{
 					MessageBox.Show("No Events to retrieve :(");
 				}
 			}
-			catch (Exception ex)
+			catch (Exception exEvents)
 			{
-				MessageBox.Show(ex.Message);
+				MessageBox.Show(string.Format("Error! could'nt fetch events - {0}.", exEvents.Message));
 			}
-		}
+}
 
 		private void fetchPosts()
 		{
 			FacebookObjectCollection<Post> allPosts;
+			bool hasShownExceptionMessage = false;
 
-			tableLayoutPanelPosts.Controls.Clear();
-			tableLayoutPanelPosts.RowStyles.Clear();
+			tableLayoutPanelPosts.Invoke(new Action(() => tableLayoutPanelPosts.Controls.Clear()));
+			tableLayoutPanelPosts.Invoke(new Action(() => tableLayoutPanelPosts.RowStyles.Clear()));
 			try
 			{
 				allPosts = r_AppEngine.Posts;
@@ -185,19 +200,30 @@ namespace MyFacebookApp.View
 
 						if (currentPost.Type == Post.eType.photo)
 						{
-							PictureWrapper	postPictureWrapper = new PictureWrapper(currentPost.PictureURL);
-							PictureBox		postPicture = postPictureWrapper.PictureBox;
+							try
+							{
+								PictureWrapper postPictureWrapper = new PictureWrapper(currentPost.PictureURL);
+								PictureBox postPicture = postPictureWrapper.PictureBox;
 
-							tableLayoutPanelPosts.Controls.Add(postPicture);
-							isLegalPost = true;
+								tableLayoutPanelPosts.Invoke(new Action(() => tableLayoutPanelPosts.Controls.Add(postPicture)));
+								isLegalPost = true;
+							}
+							catch(FacebookApiLimitException ex)
+							{
+								if(!hasShownExceptionMessage)
+								{
+									hasShownExceptionMessage = true;
+									MessageBox.Show(ex.Message);
+								}
+							}
 						}
 
 						if (isLegalPost == true)
 						{
 							Label seperator = new Label { Text = " ", AutoSize = true };
 
-							tableLayoutPanelPosts.Controls.Add(postDetails);
-							tableLayoutPanelPosts.Controls.Add(seperator);
+							tableLayoutPanelPosts.Invoke(new Action(() => tableLayoutPanelPosts.Controls.Add(postDetails)));
+							tableLayoutPanelPosts.Invoke(new Action(() => tableLayoutPanelPosts.Controls.Add(seperator)));
 						}
 					}
 				}
@@ -206,9 +232,9 @@ namespace MyFacebookApp.View
 					MessageBox.Show("No Posts to retrieve :(");
 				}
 			}
-			catch (Exception ex)
+			catch (Exception exPosts)
 			{
-				MessageBox.Show(ex.Message);
+				MessageBox.Show(string.Format("Error! could'nt fetch posts - {0}.", exPosts.Message));
 			}
 		}
 
@@ -218,21 +244,14 @@ namespace MyFacebookApp.View
 			{
 				Label message = new Label { Text = i_Content, AutoSize = true };
 
-				tableLayoutPanelPosts.Controls.Add(message);
+				tableLayoutPanelPosts.Invoke(new Action(() => tableLayoutPanelPosts.Controls.Add(message)));
 				io_IsLegalPost = true;
 			}
 		}
 
 		private void postsButton_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				fetchPosts();
-			}
-			catch (Exception exPosts)
-			{
-				MessageBox.Show(string.Format("Error! could'nt fetch posts - {0}.", exPosts.Message));
-			}
+			FacebookView.CreateThread(fetchPosts);
 		}
 
 		public override void AddLogoutButton(Button i_LogoutButton)

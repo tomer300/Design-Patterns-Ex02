@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using MyFacebookApp.Model;
+using Facebook;
 
 namespace MyFacebookApp.View
 {
@@ -33,7 +34,6 @@ namespace MyFacebookApp.View
 			string profilePictureURL = string.Empty;
 			string firstName = string.Empty;
 			string lastName = string.Empty;
-
 			try
 			{
 				firstName = i_Friend.FirstName;
@@ -50,18 +50,30 @@ namespace MyFacebookApp.View
 			}
 			finally
 			{
-				PictureWrapper			friendPictureWrapper = new PictureWrapper(profilePictureURL);
-				DetailedProfilePicture	friendPicture = new DetailedProfilePicture(
-					friendPictureWrapper.PictureBox,
-					firstName,
-					lastName);
-				if(FriendOnClickDelegate != null)
+				try
 				{
-					friendPicture.FriendProfilePicture.Name = string.Format("{0} {1}", firstName, lastName);
-					friendPicture.FriendProfilePicture.Cursor = Cursors.Hand;
-					friendPicture.FriendProfilePicture.Click += (user,e) => FriendOnClickDelegate.Invoke(friendPicture.FriendProfilePicture, new AppUserEventArgs(i_Friend));
+					PictureWrapper friendPictureWrapper = new PictureWrapper(profilePictureURL);
+					DetailedProfilePicture friendPicture = new DetailedProfilePicture(
+						friendPictureWrapper.PictureBox,
+						firstName,
+						lastName);
+
+					if (FriendOnClickDelegate != null)
+					{
+						friendPicture.FriendProfilePicture.Name = string.Format("{0} {1}", firstName, lastName);
+						friendPicture.FriendProfilePicture.Cursor = Cursors.Hand;
+						friendPicture.FriendProfilePicture.Click += (user, e) => FacebookView.CreateThread(() => FriendOnClickDelegate.Invoke(friendPicture.FriendProfilePicture, new AppUserEventArgs(i_Friend)));
+					}
+					r_DisplayPanel.Invoke(new Action(() => r_DisplayPanel.Controls.Add(friendPicture.FriendProfilePicture)));
 				}
-				r_DisplayPanel.Controls.Add(friendPicture.FriendProfilePicture);
+				catch (FacebookApiLimitException ex)
+				{
+					if (!io_HasShownMessageBox)
+					{
+						io_HasShownMessageBox = true;
+						MessageBox.Show(ex.Message);
+					}
+				}
 			}
 		}
 		public class AppUserEventArgs: EventArgs
