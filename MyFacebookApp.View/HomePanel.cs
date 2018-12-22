@@ -14,7 +14,12 @@ namespace MyFacebookApp.View
 		{
 			InitializeComponent();
 			FacebookView.CreateThread(fetchInitialDetails);
-			FacebookView.CreateThread(fetchLikedPages);
+		}
+
+		protected override void fetchInitialDetails()
+		{
+			base.fetchInitialDetails();
+			fetchLikedPages();
 		}
 
 		public bool RememberMeStatus

@@ -167,9 +167,6 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <project key="38083095">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="DistanceBetweenTwoCoordinatesAdapter.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
@@ -193,4 +190,7 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <project key="38083095">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
 </stylecopresultscache>
