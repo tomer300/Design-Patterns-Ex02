@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="AbstractControlDescriptionProvider.cs" />
     <Compile Include="AlbumsManager.cs" />
-    <Compile Include="AppPanelFactory.cs" />
+    <Compile Include="AppScreenFactory.cs" />
     <Compile Include="AppScreenPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

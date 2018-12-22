@@ -2,7 +2,7 @@
 
 namespace MyFacebookApp.View
 {
-	internal static class AppPanelFactory
+	internal static class AppScreenFactory
 	{
 		public static AppScreenPanel CreateAppPanel(eAppPanel i_Panel, AppEngine i_AppEngine)
 		{

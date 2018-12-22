@@ -19,7 +19,7 @@ namespace MyFacebookApp.Model
 			System.Device.Location.GeoCoordinate coordinatesOfUser = new System.Device.Location.GeoCoordinate((double)i_LatitudeOfUser, (double)i_LongitudeOfUser);
 			System.Device.Location.GeoCoordinate coordinatesOfMatch = new System.Device.Location.GeoCoordinate((double)i_LatitudeOfMatch, (double)i_LongitudeOfMatch);
 
-			Distance = coordinatesOfUser.GetDistanceTo(coordinatesOfMatch) / 1000;
+			Distance = coordinatesOfUser.GetDistanceTo(coordinatesOfMatch);
 
 			return Distance;
 		}

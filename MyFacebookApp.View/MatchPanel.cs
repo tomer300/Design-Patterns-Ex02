@@ -63,6 +63,7 @@ namespace MyFacebookApp.View
 
 		private void match_Click(object i_sender, EventArgs e)
 		{
+			const int							KM = 1000;
 			FriendsDisplayer.AppUserEventArgs	appUserEventArgs = e as FriendsDisplayer.AppUserEventArgs;
 			AppUser								potentialMatch;
 			AlbumsManager						matchAlbumsManager;
@@ -95,7 +96,7 @@ namespace MyFacebookApp.View
 							potentialMatch.Location.Latitude,
 							potentialMatch.Location.Longitude);
 
-						distanceToMatch = string.Format("{0:F1} km", distance);
+						distanceToMatch = string.Format("{0:F1} km", distance / KM);
 						labelDistanceToInfo.Invoke(new Action(() => labelDistanceToInfo.Text = distanceToMatch));
 					}
 					catch (Exception ex)
