@@ -8,6 +8,7 @@ namespace MyFacebookApp.Model
 	public class DistanceBetweenTwoCoordinatesAdapter
 	{
 		public double Distance { get; private set; }
+
 		public double CalculateDistance(double? i_LatitudeOfUser, double? i_LongitudeOfUser, double? i_LatitudeOfMatch, double? i_LongitudeOfMatch)
 		{
 			if (i_LatitudeOfUser == null || i_LongitudeOfUser == null || i_LatitudeOfMatch == null || i_LongitudeOfMatch == null)

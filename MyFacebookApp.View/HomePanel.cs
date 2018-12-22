@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using MyFacebookApp.Model;
-using System.Threading;
 using Facebook;
 
 namespace MyFacebookApp.View
@@ -71,10 +69,10 @@ namespace MyFacebookApp.View
 			try
 			{
 				FacebookObjectCollection<Page> likedPages = r_AppEngine.LikedPages;
+
 				if (!listBoxLikedPages.InvokeRequired)
 				{
 					pageBindingSource.DataSource = likedPages;
-
 				}
 				else
 				{
@@ -135,7 +133,6 @@ namespace MyFacebookApp.View
 
 		private void fetchEvents()
 		{
-
 			try
 			{
 				FacebookObjectCollection<Event> events = r_AppEngine.Events;

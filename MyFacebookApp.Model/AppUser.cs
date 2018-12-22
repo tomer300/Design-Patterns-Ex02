@@ -1,7 +1,6 @@
 ﻿using System;
 using FacebookWrapper.ObjectModel;
 using static FacebookWrapper.ObjectModel.User;
-using System.Drawing;
 
 namespace MyFacebookApp.Model
 {
@@ -30,7 +29,6 @@ namespace MyFacebookApp.Model
 				}
 
 				return pictureURL;
-
 			}
 		}
 
@@ -90,6 +88,7 @@ namespace MyFacebookApp.Model
 				return cityName;
 			}
 		}
+
 		public Location Location
 		{
 			get
@@ -112,6 +111,7 @@ namespace MyFacebookApp.Model
 				return location;
 			}
 		}
+
 		public string Birthday
 		{
 			get
@@ -351,7 +351,6 @@ namespace MyFacebookApp.Model
 
 			return allWorks;
 		}
-
 
 		internal eRelationshipStatus? GetRelationshipStatus()
 		{

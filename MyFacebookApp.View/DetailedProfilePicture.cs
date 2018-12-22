@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace MyFacebookApp.View
 {
-	class DetailedProfilePicture
+	internal class DetailedProfilePicture
 	{
-		public PictureBox FriendProfilePicture { get; private set; }	
-		public string FirstName { get; private set; }
-		public string LastName { get; private set; }
+		public PictureBox FriendProfilePicture { get; private set; }
 
+		public string FirstName { get; private set; }
+
+		public string LastName { get; private set; }
 
 		public DetailedProfilePicture(PictureBox i_FriendsPicture, string i_FirstName, string i_LastName)
 		{

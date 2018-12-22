@@ -30,10 +30,11 @@ namespace MyFacebookApp.View
 			flowLayoutPanelContactPhotos.Controls.Clear();
 			try
 			{
-				hitechWorkerContacts = r_AppEngine.Friends; //r_AppEngine.FindHitechWorkersContacts();
+				hitechWorkerContacts = r_AppEngine.FindHitechWorkersContacts();
 				if (hitechWorkerContacts != null && hitechWorkerContacts.Count > 0)
 				{
-					FacebookView.CreateThread(() => {
+					FacebookView.CreateThread(() => 
+					{
 						foreach (AppUser currentContact in hitechWorkerContacts)
 						{
 							addContactToListBoxJobs(currentContact, ref hasShownMessageBox);
@@ -80,7 +81,6 @@ namespace MyFacebookApp.View
 			}
 			finally
 			{
-
 				contactFullName = string.Format("{0} {1}", contactFirstName, contactLastName);
 				listBoxJobs.Invoke(new Action(() =>
 				{
@@ -89,7 +89,6 @@ namespace MyFacebookApp.View
 										contactFullName,
 										string.Format("{0} works at", contactFullName, workPlace))));
 				}));
-
 			}
 		}
 

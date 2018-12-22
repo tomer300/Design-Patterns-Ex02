@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
-using System.Threading;
 using Facebook;
 
 namespace MyFacebookApp.View
@@ -97,17 +96,19 @@ namespace MyFacebookApp.View
 			{
 				AlbumClickedAction.Invoke();
 			}
-			try {
 
+			try
+			{
 				foreach (Photo currentPhoto in i_ClickedAlbum.Photos)
 				{
 					try
 					{
-						PictureWrapper currentPictureWrapper = new PictureWrapper(currentPhoto.PictureNormalURL);
-						PictureBox currentPhotoPictureBox = currentPictureWrapper.PictureBox;
+						PictureWrapper	currentPictureWrapper = new PictureWrapper(currentPhoto.PictureNormalURL);
+						PictureBox		currentPhotoPictureBox = currentPictureWrapper.PictureBox;
+
 						r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Add(currentPhotoPictureBox)));
 					}
-					catch(FacebookApiLimitException ex)
+					catch (FacebookApiLimitException ex)
 					{
 						if (!hasShownExceptionMessage)
 						{
@@ -115,15 +116,12 @@ namespace MyFacebookApp.View
 							MessageBox.Show(ex.Message);
 						}
 					}
-
 				}
-
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
-			}
-			
+			}	
 		}
 	}
 }

@@ -7,18 +7,19 @@ using Facebook;
 namespace MyFacebookApp.View
 {
 	public delegate void friendPictureClickEvent(object i_Sender, FriendsDisplayer.AppUserEventArgs i_EventArgs);
+
 	public class FriendsDisplayer
 	{
-		private readonly FacebookObjectCollection<AppUser> r_Friends;
-		private readonly Panel r_DisplayPanel;
-		public event friendPictureClickEvent FriendOnClickDelegate;
+		private readonly FacebookObjectCollection<AppUser>	r_Friends;
+		private readonly Panel								r_DisplayPanel;
+
+		public event friendPictureClickEvent				FriendOnClickDelegate;
 
 		public FriendsDisplayer(FacebookObjectCollection<AppUser> i_Friends, Panel i_PanelToDisplayIn )
 		{
 			r_Friends = i_Friends;
 			r_DisplayPanel = i_PanelToDisplayIn;
 		}
-
 		
 		public void Display()
 		{
@@ -29,6 +30,7 @@ namespace MyFacebookApp.View
 				showFriendProfilePicture(friend, ref hasShownMessageBox);
 			}
 		}
+
 		private void showFriendProfilePicture(AppUser i_Friend, ref bool io_HasShownMessageBox)
 		{
 			string profilePictureURL = string.Empty;
@@ -64,6 +66,7 @@ namespace MyFacebookApp.View
 						friendPicture.FriendProfilePicture.Cursor = Cursors.Hand;
 						friendPicture.FriendProfilePicture.Click += (user, e) => FacebookView.CreateThread(() => FriendOnClickDelegate.Invoke(friendPicture.FriendProfilePicture, new AppUserEventArgs(i_Friend)));
 					}
+
 					r_DisplayPanel.Invoke(new Action(() => r_DisplayPanel.Controls.Add(friendPicture.FriendProfilePicture)));
 				}
 				catch (FacebookApiLimitException ex)
@@ -76,9 +79,11 @@ namespace MyFacebookApp.View
 				}
 			}
 		}
-		public class AppUserEventArgs: EventArgs
+
+		public class AppUserEventArgs : EventArgs
 		{
 			public AppUser User { get; private set; }
+
 			public AppUserEventArgs(AppUser i_User)
 			{
 				User = i_User;

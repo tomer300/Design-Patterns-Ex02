@@ -1,13 +1,14 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Facebook;
-using System;
 
 namespace MyFacebookApp.View
 {
 	public class PictureWrapper
 	{
 		public PictureBox PictureBox { get; private set; }
+
 		public PictureWrapper(string i_PictureURL, int i_Width = 100, int i_Height = 100, PictureBoxSizeMode i_PictureBoxSizeMode = PictureBoxSizeMode.StretchImage)
 		{
 			PictureBox = new PictureBox { Width = i_Width, Height = i_Height };
@@ -20,8 +21,9 @@ namespace MyFacebookApp.View
 				}
 				catch (Exception ex)
 				{
-					throw new FacebookApiLimitException(string.Format("Couldnt load picture- {0}", ex.Message));					
+					throw new FacebookApiLimitException(string.Format("Couldnt load picture- {0}", ex.Message));
 				}
+
 				PictureBox.SizeMode = i_PictureBoxSizeMode;
 			}
 			else

@@ -5,7 +5,6 @@ using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
 {
-	//add a data member
 	public partial class MatchPanel : AppScreenPanel
 	{
 		public MatchPanel(AppEngine i_AppEngine) : base(i_AppEngine)
@@ -88,13 +87,13 @@ namespace MyFacebookApp.View
 							matchAlbumsManager = new AlbumsManager(matchAlbums, flowLayoutPanelMatchPictures);
 							FacebookView.CreateThread(matchAlbumsManager.DisplayAlbums);
 						}
+
 						panelUserDetailsMatch.SetDataSource(potentialMatch);
 						double distance = r_AppEngine.DistanceBetweenTwoCoordinatesAdapter.CalculateDistance(
 							r_AppEngine.LoggedUser.Location.Latitude,
 							r_AppEngine.LoggedUser.Location.Longitude,
 							potentialMatch.Location.Latitude,
-							potentialMatch.Location.Longitude
-							);
+							potentialMatch.Location.Longitude);
 
 						distanceToMatch = string.Format("{0:F1} km", distance);
 						labelDistanceToInfo.Invoke(new Action(() => labelDistanceToInfo.Text = distanceToMatch));
