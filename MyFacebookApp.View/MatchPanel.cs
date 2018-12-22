@@ -29,7 +29,7 @@ namespace MyFacebookApp.View
 						comboBoxAgeRanges.Items[comboBoxAgeRanges.SelectedIndex].ToString());
 					if (potentialMatches != null && potentialMatches.Count > 0)
 					{
-						FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.Friends, flowLayoutPanelMatchPictures);
+						FriendsDisplayer displayer = new FriendsDisplayer(potentialMatches, flowLayoutPanelMatchPictures);
 						displayer.FriendOnClickDelegate += match_Click;
 						FacebookView.CreateThread(displayer.Display);
 					}

@@ -64,7 +64,7 @@ namespace MyFacebookApp.View
 					{
 						friendPicture.FriendProfilePicture.Name = string.Format("{0} {1}", firstName, lastName);
 						friendPicture.FriendProfilePicture.Cursor = Cursors.Hand;
-						friendPicture.FriendProfilePicture.Click += (user, e) => FacebookView.CreateThread(() => FriendOnClickDelegate.Invoke(friendPicture.FriendProfilePicture, new AppUserEventArgs(i_Friend)));
+						friendPicture.FriendProfilePicture.Click += (user, e) => FriendOnClickDelegate.Invoke(friendPicture.FriendProfilePicture, new AppUserEventArgs(i_Friend));
 					}
 
 					r_DisplayPanel.Invoke(new Action(() => r_DisplayPanel.Controls.Add(friendPicture.FriendProfilePicture)));
