@@ -29,7 +29,9 @@
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.Size = new System.Drawing.Size(936, 537);
 		}
 
 		#endregion

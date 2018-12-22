@@ -153,7 +153,7 @@ namespace MyFacebookApp.View
 		{
 			this.panelMain.Controls.Clear();
 			this.panelMain.Controls.Add(panelHomePage);
-			panelHomePage.ShowAllDetails();
+			CreateThread(panelHomePage.ShowAllDetails);
 		}
 
 		private void findAMatchAppButton_Click(object sender, EventArgs e)

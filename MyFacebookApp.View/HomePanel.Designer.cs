@@ -259,8 +259,6 @@
 			// 
 			// HomePanel
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.Controls.Add(this.eventsRoundedButton);
 			this.Controls.Add(this.albumsRoundedButton);
 			this.Controls.Add(this.friendsRoundedButton);
@@ -271,7 +269,6 @@
 			this.Controls.Add(this.flowLayoutPanelAlbums);
 			this.Controls.Add(this.panelHomePageTop);
 			this.Name = "HomePanel";
-			this.Size = new System.Drawing.Size(936, 537);
 			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
 			this.panelHomePageTop.ResumeLayout(false);
 			this.panelHomePageTop.PerformLayout();

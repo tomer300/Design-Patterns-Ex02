@@ -179,8 +179,6 @@
 			// 
 			// MatchPanel
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.Controls.Add(this.labelDistanceToInfo);
 			this.Controls.Add(this.labelDistanceTo);
 			this.Controls.Add(this.userDetailsPanelLoggedUser);
@@ -193,10 +191,8 @@
 			this.Controls.Add(this.checkBoxBoys);
 			this.Controls.Add(this.checkBoxGirls);
 			this.Name = "MatchPanel";
-			this.Size = new System.Drawing.Size(936, 537);
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 
 		#endregion
