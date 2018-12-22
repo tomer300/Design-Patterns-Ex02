@@ -90,7 +90,7 @@ namespace MyFacebookApp.View
 						}
 
 						panelUserDetailsMatch.SetDataSource(potentialMatch);
-						double distance = r_AppEngine.DistanceBetweenTwoCoordinatesAdapter.CalculateDistance(
+						double distance = r_AppEngine.DistanceBetweenTwoCoordinatesAdapter.GetDistanceTo(
 							r_AppEngine.LoggedUser.Location.Latitude,
 							r_AppEngine.LoggedUser.Location.Longitude,
 							potentialMatch.Location.Latitude,

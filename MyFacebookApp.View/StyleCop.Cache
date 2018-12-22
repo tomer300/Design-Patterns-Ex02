@@ -564,9 +564,6 @@
       </violation>
     </violations>
   </sourcecode>
-  <project key="-1212106333">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="AppScreenFactory.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
@@ -741,7 +738,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/22 17:33:31.469</sourceFile>
+      <sourceFile>2018/12/22 17:40:12.503</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -760,4 +757,7 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <project key="-1212106333">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
 </stylecopresultscache>
