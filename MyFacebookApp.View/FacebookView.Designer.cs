@@ -203,9 +203,9 @@
 		private System.Windows.Forms.Label labelAppName;
 		private System.Windows.Forms.Panel panelShadowColorLight;
 		private System.Windows.Forms.Panel panelShadowColorDark;
-		private MyFacebookApp.View.HomePanel panelHomePage;
-		private MyFacebookApp.View.JobPanel panelJob;
-		private MyFacebookApp.View.MatchPanel panelMatch;
+		private MyFacebookApp.View.AppScreenPanel panelHomePage;
+		private MyFacebookApp.View.AppScreenPanel panelJob;
+		private MyFacebookApp.View.AppScreenPanel panelMatch;
 		private MyFacebookApp.View.RoundedButton logoutButton;
 		private MyFacebookApp.View.RoundedButton backToHomeButton;
 	}

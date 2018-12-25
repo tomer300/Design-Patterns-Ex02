@@ -53,30 +53,30 @@ namespace MyFacebookApp.View
 		{
 			base.OnShown(e);
 
-			if (AppSettings.Settings.RememberUser)
+			try
 			{
-				m_AppEngine = FacebookManager.AutoLogin();
-
-				if (m_AppEngine != null)
+				if (AppSettings.Settings.RememberUser)
 				{
-					createHomePanel();
-					try
+					m_AppEngine = FacebookManager.AutoLogin();
+
+					if (m_AppEngine != null)
 					{
+						createHomePanel();
 						loadSettings();
 					}
-					catch(Exception)
-					{
-						MessageBox.Show("Couldn't load settings.");
-					}
 				}
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Couldn't load settings.");
 			}
 		}
 
 		private void loadSettings()
 		{
 			this.Location = AppSettings.Settings.Location;
-			this.panelHomePage.RememberMeStatus = AppSettings.Settings.RememberUser;
-			FacebookView.CreateThread(panelHomePage.ShowAllDetails);
+			(this.panelHomePage as HomePanel).RememberMeStatus = AppSettings.Settings.RememberUser;//move checkbox to facebookview
+			FacebookView.CreateThread((this.panelHomePage as HomePanel).ShowAllDetails);//move showalldetails to homepanel ctor ask if appsettings.rememberuser==true
 		}
 
 		protected override void OnFormClosing(FormClosingEventArgs e)
@@ -96,7 +96,7 @@ namespace MyFacebookApp.View
 		{
 			if (panelHomePage != null)
 			{
-				AppSettings.Settings.RememberUser = panelHomePage.RememberMeStatus;
+				AppSettings.Settings.RememberUser = (this.panelHomePage as HomePanel).RememberMeStatus;
 			}
 
 			AppSettings.Settings.Location = this.Location;
@@ -153,7 +153,7 @@ namespace MyFacebookApp.View
 		{
 			this.panelMain.Controls.Clear();
 			this.panelMain.Controls.Add(panelHomePage);
-			CreateThread(panelHomePage.ShowAllDetails);
+			CreateThread((this.panelHomePage as HomePanel).ShowAllDetails);//check if able to move to home panel/delete option.
 		}
 
 		private void findAMatchAppButton_Click(object sender, EventArgs e)

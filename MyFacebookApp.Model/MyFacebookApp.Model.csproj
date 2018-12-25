@@ -40,6 +40,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="AppUser.cs" />
     <Compile Include="DistanceBetweenTwoCoordinatesAdapter.cs" />
+    <Compile Include="IDistance.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="FacebookManager.cs" />
     <Compile Include="Match.cs" />
@@ -70,6 +71,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\AppEngine.datasource" />
     <None Include="Resources\hitechKeyWords.xml" />
   </ItemGroup>

@@ -42,17 +42,15 @@ namespace MyFacebookApp.View
 
 		internal void ShowAllDetails()
 		{
-			try
-			{
-				FacebookView.CreateThread(displayAlbums);
-				FacebookView.CreateThread(fetchPosts);
-				FacebookView.CreateThread(fetchFriends);
-				FacebookView.CreateThread(fetchEvents);
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message);
-			}
+			fetchAllDetails();
+		}
+
+		private void fetchAllDetails()
+		{
+			FacebookView.CreateThread(displayAlbums);
+			FacebookView.CreateThread(fetchPosts);
+			FacebookView.CreateThread(fetchFriends);
+			FacebookView.CreateThread(fetchEvents);
 		}
 
 		private void fetchFriends()

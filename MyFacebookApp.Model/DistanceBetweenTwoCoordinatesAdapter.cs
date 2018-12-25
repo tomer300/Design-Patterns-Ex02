@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace MyFacebookApp.Model
 {
-	public class DistanceBetweenTwoCoordinatesAdapter
+	public class DistanceBetweenTwoCoordinatesAdapter : IDistance
 	{
 		private System.Device.Location.GeoCoordinate m_CoordinatesOfUser;
 		private System.Device.Location.GeoCoordinate m_CoordinatesOfMatch;
