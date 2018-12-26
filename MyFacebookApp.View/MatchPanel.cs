@@ -5,7 +5,7 @@ using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
 {
-	public partial class MatchPanel : AppScreenPanel
+	public partial class MatchPanel : AppScreenPanel, IBackable
 	{
 		internal MatchPanel(AppEngine i_AppEngine) : base(i_AppEngine)
 		{

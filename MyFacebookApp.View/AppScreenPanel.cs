@@ -1,21 +1,22 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Collections.Generic;
 using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
 {
 	[TypeDescriptionProvider(typeof(AbstractControlDescriptionProvider<AppScreenPanel, UserControl>))]
-	public abstract partial class AppScreenPanel : UserControl, ILogoutable, IBackable
+	public abstract partial class AppScreenPanel : UserControl, IAddable
 	{
 		protected readonly AppEngine	r_AppEngine;
-		protected readonly LogoutAttach r_LogoutAttacher;
+		protected readonly ButtonAttach r_ButtonAttacher;
 
 		internal AppScreenPanel(AppEngine i_AppEngine)
 		{
 			InitializeComponent();
 			r_AppEngine = i_AppEngine;
-			r_LogoutAttacher = new LogoutAttach();
+			r_ButtonAttacher = new ButtonAttach();
 		}
 
 		protected virtual void fetchInitialDetails()
@@ -33,14 +34,12 @@ namespace MyFacebookApp.View
 			}
 		}
 
-		public virtual void AddLogoutButton(Button i_LogoutButton)
+		public virtual void AddButtons(ICollection<ButtonBase> i_Buttons)
 		{
-			r_LogoutAttacher.AddLogoutButton(i_LogoutButton, this, null);
-		}
-
-		public void AddBackToHomeButton(Button i_BackToHomeButton)
-		{
-			Controls.Add(i_BackToHomeButton);
+			foreach (ButtonBase buttonToAdd in i_Buttons)
+			{
+				r_ButtonAttacher.AddButton(buttonToAdd, this, null);
+			}
 		}
 	}
 }

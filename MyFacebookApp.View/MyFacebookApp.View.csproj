@@ -65,7 +65,7 @@
     </Compile>
     <Compile Include="FriendsDisplayer.cs" />
     <Compile Include="IBackable.cs" />
-    <Compile Include="LogoutAttach.cs" />
+    <Compile Include="ButtonAttach.cs" />
     <Compile Include="MatchPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,7 +84,7 @@
     <Compile Include="HomePanel.Designer.cs">
       <DependentUpon>HomePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILogoutable.cs" />
+    <Compile Include="IAddable.cs" />
     <Compile Include="PictureWrapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -32,7 +32,6 @@
 			this.panelMain = new System.Windows.Forms.Panel();
 			this.findJobAppButton = new System.Windows.Forms.Button();
 			this.findAMatchAppButton = new System.Windows.Forms.Button();
-			this.loadDetailsAppButton = new System.Windows.Forms.Button();
 			this.panelMainButtons = new System.Windows.Forms.Panel();
 			this.loginAppButton = new System.Windows.Forms.Button();
 			this.panelFaceBookTitle = new System.Windows.Forms.Panel();
@@ -58,7 +57,7 @@
 			this.findJobAppButton.FlatAppearance.BorderSize = 0;
 			this.findJobAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.findJobAppButton.Image = global::MyFacebookApp.View.Properties.Resources.jobButtonIcon;
-			this.findJobAppButton.Location = new System.Drawing.Point(0, 313);
+			this.findJobAppButton.Location = new System.Drawing.Point(3, 204);
 			this.findJobAppButton.Name = "findJobAppButton";
 			this.findJobAppButton.Size = new System.Drawing.Size(216, 103);
 			this.findJobAppButton.TabIndex = 3;
@@ -75,7 +74,7 @@
 			this.findAMatchAppButton.FlatAppearance.BorderSize = 0;
 			this.findAMatchAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.findAMatchAppButton.Image = global::MyFacebookApp.View.Properties.Resources.dateButtonIcon;
-			this.findAMatchAppButton.Location = new System.Drawing.Point(0, 422);
+			this.findAMatchAppButton.Location = new System.Drawing.Point(3, 313);
 			this.findAMatchAppButton.Name = "findAMatchAppButton";
 			this.findAMatchAppButton.Size = new System.Drawing.Size(216, 103);
 			this.findAMatchAppButton.TabIndex = 4;
@@ -85,26 +84,8 @@
 			this.findAMatchAppButton.UseVisualStyleBackColor = true;
 			this.findAMatchAppButton.Click += new System.EventHandler(this.findAMatchAppButton_Click);
 			// 
-			// loadDetailsAppButton
-			// 
-			this.loadDetailsAppButton.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.loadDetailsAppButton.Enabled = false;
-			this.loadDetailsAppButton.FlatAppearance.BorderSize = 0;
-			this.loadDetailsAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.loadDetailsAppButton.Image = global::MyFacebookApp.View.Properties.Resources.loadButtonIcon;
-			this.loadDetailsAppButton.Location = new System.Drawing.Point(0, 204);
-			this.loadDetailsAppButton.Name = "loadDetailsAppButton";
-			this.loadDetailsAppButton.Size = new System.Drawing.Size(216, 103);
-			this.loadDetailsAppButton.TabIndex = 6;
-			this.loadDetailsAppButton.Text = "Load Profile";
-			this.loadDetailsAppButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.loadDetailsAppButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.loadDetailsAppButton.UseVisualStyleBackColor = true;
-			this.loadDetailsAppButton.Click += new System.EventHandler(this.loadDetailsButton_Click);
-			// 
 			// panelMainButtons
 			// 
-			this.panelMainButtons.Controls.Add(this.loadDetailsAppButton);
 			this.panelMainButtons.Controls.Add(this.loginAppButton);
 			this.panelMainButtons.Controls.Add(this.findAMatchAppButton);
 			this.panelMainButtons.Controls.Add(this.findJobAppButton);
@@ -121,7 +102,7 @@
 			this.loginAppButton.FlatAppearance.BorderSize = 0;
 			this.loginAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.loginAppButton.Image = global::MyFacebookApp.View.Properties.Resources.loginButtonIcon;
-			this.loginAppButton.Location = new System.Drawing.Point(0, 95);
+			this.loginAppButton.Location = new System.Drawing.Point(3, 95);
 			this.loginAppButton.Name = "loginAppButton";
 			this.loginAppButton.Size = new System.Drawing.Size(216, 103);
 			this.loginAppButton.TabIndex = 5;
@@ -196,13 +177,13 @@
 		private System.Windows.Forms.Panel panelMain;
 		private System.Windows.Forms.Button findJobAppButton;
 		private System.Windows.Forms.Button findAMatchAppButton;
-		private System.Windows.Forms.Button loadDetailsAppButton;
 		private System.Windows.Forms.Panel panelMainButtons;
 		private System.Windows.Forms.Button loginAppButton;
 		private System.Windows.Forms.Panel panelFaceBookTitle;
 		private System.Windows.Forms.Label labelAppName;
 		private System.Windows.Forms.Panel panelShadowColorLight;
 		private System.Windows.Forms.Panel panelShadowColorDark;
+		private System.Windows.Forms.CheckBox checkBoxRememberMe;
 		private MyFacebookApp.View.AppScreenPanel panelHomePage;
 		private MyFacebookApp.View.AppScreenPanel panelJob;
 		private MyFacebookApp.View.AppScreenPanel panelMatch;

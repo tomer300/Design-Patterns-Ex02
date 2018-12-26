@@ -2,8 +2,7 @@
 
 namespace MyFacebookApp.View
 {
-	public interface IBackable
+	public interface IBackable : IAddable
 	{
-		void AddBackToHomeButton(Button i_BackToHomeButton);
 	}
 }

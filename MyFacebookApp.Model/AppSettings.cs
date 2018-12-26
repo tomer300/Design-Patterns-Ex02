@@ -33,9 +33,9 @@ namespace MyFacebookApp.Model
 
 		public Point Location { get; set; }
 
-		public bool RememberUser { get; set; } = false;
-
 		public string LastAccessToken { get; set; } = string.Empty;
+
+		public bool RememberUser { get; set; } = false;
 
 		private AppSettings()
 		{

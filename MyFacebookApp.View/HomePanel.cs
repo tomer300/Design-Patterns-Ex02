@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 using MyFacebookApp.Model;
 using Facebook;
@@ -14,6 +15,10 @@ namespace MyFacebookApp.View
 		{
 			InitializeComponent();
 			FacebookView.CreateThread(fetchInitialDetails);
+			if(AppSettings.Settings.RememberUser)
+			{
+				FacebookView.CreateThread(ShowAllDetails);
+			}
 		}
 
 		protected override void fetchInitialDetails()
@@ -22,30 +27,12 @@ namespace MyFacebookApp.View
 			fetchLikedPages();
 		}
 
-		public bool RememberMeStatus
-		{
-			get
-			{
-				return checkBoxRememberMe.Checked;
-			}
-
-			set
-			{
-				checkBoxRememberMe.Checked = value;
-			}
-		}
-
 		private void friendsButton_Click(object sender, EventArgs e)
 		{
 			FacebookView.CreateThread(fetchFriends);
 		}
 
-		internal void ShowAllDetails()
-		{
-			fetchAllDetails();
-		}
-
-		private void fetchAllDetails()
+		private void ShowAllDetails()
 		{
 			FacebookView.CreateThread(displayAlbums);
 			FacebookView.CreateThread(fetchPosts);
@@ -254,9 +241,12 @@ namespace MyFacebookApp.View
 			FacebookView.CreateThread(fetchPosts);
 		}
 
-		public override void AddLogoutButton(Button i_LogoutButton)
+		public override void AddButtons(ICollection<ButtonBase> i_Buttons)
 		{
-			r_LogoutAttacher.AddLogoutButton(i_LogoutButton, this, panelHomePageTop);
+			foreach(ButtonBase buttonToAdd in i_Buttons)
+			{
+				r_ButtonAttacher.AddButton(buttonToAdd, this, panelHomePageTop);
+			}
 		}
 	}
 }

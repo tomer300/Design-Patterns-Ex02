@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Device.Location;
 using FacebookWrapper.ObjectModel;
 using static FacebookWrapper.ObjectModel.User;
-using System.Device.Location;
 
 namespace MyFacebookApp.Model
 {
-	public class Match:GeoCoordinate
+	public class Match
 	{
 		private readonly FacebookObjectCollection<AppUser> r_UserFriends;
 

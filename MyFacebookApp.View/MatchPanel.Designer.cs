@@ -193,6 +193,7 @@
 			this.Name = "MatchPanel";
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 
 		#endregion

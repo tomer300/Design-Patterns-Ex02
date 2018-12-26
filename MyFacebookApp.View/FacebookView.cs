@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
@@ -12,7 +13,7 @@ namespace MyFacebookApp.View
 		public FacebookView()
 		{
 			InitializeComponent();
-			createLogoutAndBackButtons();
+			createMutualScreenButtons();
  		}
 
 		internal static void CreateThread(ThreadStart i_Method)
@@ -22,10 +23,11 @@ namespace MyFacebookApp.View
 			thread.Start();
 		}
 
-		private void createLogoutAndBackButtons()
+		private void createMutualScreenButtons()
 		{
 			this.logoutButton = new RoundedButton();
 			this.backToHomeButton = new RoundedButton();
+			this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
 			//
 			// logoutButton
 			// 
@@ -47,6 +49,18 @@ namespace MyFacebookApp.View
 			this.backToHomeButton.Text = "Back To Home";
 			this.backToHomeButton.UseVisualStyleBackColor = true;
 			this.backToHomeButton.Click += new System.EventHandler(this.backToHomePage);
+			// 
+			// checkBoxRememberMe
+			// 
+			this.checkBoxRememberMe.AutoSize = true;
+			this.checkBoxRememberMe.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.checkBoxRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+			this.checkBoxRememberMe.Location = new System.Drawing.Point(615, 11);
+			this.checkBoxRememberMe.Name = "checkBoxRememberMe";
+			this.checkBoxRememberMe.Size = new System.Drawing.Size(177, 27);
+			this.checkBoxRememberMe.TabIndex = 1;
+			this.checkBoxRememberMe.Text = "Remember Me";
+			this.checkBoxRememberMe.UseVisualStyleBackColor = true;
 		}
 
 		protected override void OnShown(EventArgs e)
@@ -75,8 +89,7 @@ namespace MyFacebookApp.View
 		private void loadSettings()
 		{
 			this.Location = AppSettings.Settings.Location;
-			(this.panelHomePage as HomePanel).RememberMeStatus = AppSettings.Settings.RememberUser;//move checkbox to facebookview
-			FacebookView.CreateThread((this.panelHomePage as HomePanel).ShowAllDetails);//move showalldetails to homepanel ctor ask if appsettings.rememberuser==true
+			this.checkBoxRememberMe.Checked = AppSettings.Settings.RememberUser;
 		}
 
 		protected override void OnFormClosing(FormClosingEventArgs e)
@@ -96,7 +109,7 @@ namespace MyFacebookApp.View
 		{
 			if (panelHomePage != null)
 			{
-				AppSettings.Settings.RememberUser = (this.panelHomePage as HomePanel).RememberMeStatus;
+				AppSettings.Settings.RememberUser = checkBoxRememberMe.Checked;
 			}
 
 			AppSettings.Settings.Location = this.Location;
@@ -105,17 +118,31 @@ namespace MyFacebookApp.View
 
 		private void findJobButton_Click(object sender, EventArgs e)
 		{
-			panelJob = AppScreenFactory.CreateAppPanel(AppScreenFactory.eAppPanel.JOB, m_AppEngine) as JobPanel;
-			panelJob.AddLogoutButton(logoutButton);
-			panelJob.AddBackToHomeButton(backToHomeButton);
+			List<ButtonBase> buttons;
+
+			panelJob = AppScreenFactory.CreateAppPanel(AppScreenFactory.eAppPanel.JOB, m_AppEngine);
+			buttons = createListForButtonsToAdd();
+			buttons.Add(backToHomeButton);
+			panelJob.AddButtons(buttons);
 			panelMain.Controls.Clear();
 			panelMain.Controls.Add(panelJob);
 		}
-		
+
+		private List<ButtonBase> createListForButtonsToAdd()
+		{
+			List<ButtonBase> buttonsToAdd = new List<ButtonBase>();
+			buttonsToAdd.Add(logoutButton);
+			buttonsToAdd.Add(checkBoxRememberMe);
+			return buttonsToAdd;
+		}
+
 		private void backToHomePage(object sender, EventArgs e)
 		{
+			List<ButtonBase> buttons;
+
 			panelMain.Controls.Clear();
-			panelHomePage.AddLogoutButton(logoutButton);
+			buttons = createListForButtonsToAdd();
+			panelHomePage.AddButtons(buttons);
 			panelMain.Controls.Add(panelHomePage);
 		}
 
@@ -134,8 +161,11 @@ namespace MyFacebookApp.View
 
 		private void createHomePanel()
 		{
-			panelHomePage = AppScreenFactory.CreateAppPanel(AppScreenFactory.eAppPanel.HOME, m_AppEngine) as HomePanel;
-			panelHomePage.AddLogoutButton(logoutButton);
+			List<ButtonBase> buttons;
+
+			buttons = createListForButtonsToAdd();
+			panelHomePage = AppScreenFactory.CreateAppPanel(AppScreenFactory.eAppPanel.HOME, m_AppEngine);
+			panelHomePage.AddButtons(buttons);
 			this.panelMain.Controls.Clear();
 			this.panelMain.Controls.Add(this.panelHomePage);
 			setAppButtonsEnabledStatus(true);
@@ -143,24 +173,19 @@ namespace MyFacebookApp.View
 
 		private void setAppButtonsEnabledStatus(bool i_IsEnabled)
 		{
-			loadDetailsAppButton.Enabled = i_IsEnabled;
 			findJobAppButton.Enabled = i_IsEnabled;
 			findAMatchAppButton.Enabled = i_IsEnabled;
 			logoutButton.Enabled = i_IsEnabled;
 		}
 
-		private void loadDetailsButton_Click(object sender, EventArgs e)
-		{
-			this.panelMain.Controls.Clear();
-			this.panelMain.Controls.Add(panelHomePage);
-			CreateThread((this.panelHomePage as HomePanel).ShowAllDetails);//check if able to move to home panel/delete option.
-		}
-
 		private void findAMatchAppButton_Click(object sender, EventArgs e)
 		{
-			panelMatch = AppScreenFactory.CreateAppPanel(AppScreenFactory.eAppPanel.MATCH, m_AppEngine) as MatchPanel;
-			panelMatch.AddLogoutButton(logoutButton);
-			panelMatch.AddBackToHomeButton(backToHomeButton);
+			List<ButtonBase> buttons;
+
+			panelMatch = AppScreenFactory.CreateAppPanel(AppScreenFactory.eAppPanel.MATCH, m_AppEngine);
+			buttons = createListForButtonsToAdd();
+			buttons.Add(backToHomeButton);
+			panelMatch.AddButtons(buttons);
 			panelMain.Controls.Clear();
 			panelMain.Controls.Add(panelMatch);
 		}

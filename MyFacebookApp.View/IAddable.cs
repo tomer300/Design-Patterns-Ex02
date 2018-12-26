@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace MyFacebookApp.View
 {
-	public interface ILogoutable
+	public interface IAddable
 	{
 	}
 }

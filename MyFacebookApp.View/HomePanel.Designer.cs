@@ -40,7 +40,6 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.listBoxLikedPages = new System.Windows.Forms.ListBox();
 			this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
 			this.panelUserDetails = new MyFacebookApp.View.UserDetailsPanel();
 			this.flowLayoutPanelBorderPosts = new System.Windows.Forms.FlowLayoutPanel();
 			this.eventsRoundedButton = new MyFacebookApp.View.RoundedButton();
@@ -114,7 +113,6 @@
 			this.panelHomePageTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.panelHomePageTop.Controls.Add(this.label1);
 			this.panelHomePageTop.Controls.Add(this.listBoxLikedPages);
-			this.panelHomePageTop.Controls.Add(this.checkBoxRememberMe);
 			this.panelHomePageTop.Controls.Add(this.panelUserDetails);
 			this.panelHomePageTop.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panelHomePageTop.Location = new System.Drawing.Point(0, 0);
@@ -151,18 +149,6 @@
 			// pageBindingSource
 			// 
 			this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
-			// 
-			// checkBoxRememberMe
-			// 
-			this.checkBoxRememberMe.AutoSize = true;
-			this.checkBoxRememberMe.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.checkBoxRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.checkBoxRememberMe.Location = new System.Drawing.Point(615, 11);
-			this.checkBoxRememberMe.Name = "checkBoxRememberMe";
-			this.checkBoxRememberMe.Size = new System.Drawing.Size(177, 27);
-			this.checkBoxRememberMe.TabIndex = 1;
-			this.checkBoxRememberMe.Text = "Remember Me";
-			this.checkBoxRememberMe.UseVisualStyleBackColor = true;
 			// 
 			// panelUserDetails
 			// 
@@ -259,7 +245,6 @@
 			// 
 			// HomePanel
 			// 
-			this.Controls.Add(this.eventsRoundedButton);
 			this.Controls.Add(this.albumsRoundedButton);
 			this.Controls.Add(this.friendsRoundedButton);
 			this.Controls.Add(this.postsRoundedButton);
@@ -286,7 +271,6 @@
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAlbums;
 		private System.Windows.Forms.Panel panelHomePageTop;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBorderPosts;
-		private System.Windows.Forms.CheckBox checkBoxRememberMe;
 		private MyFacebookApp.View.UserDetailsPanel panelUserDetails;
 		private MyFacebookApp.View.RoundedButton postsRoundedButton;
 		private MyFacebookApp.View.RoundedButton friendsRoundedButton;

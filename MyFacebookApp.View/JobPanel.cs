@@ -11,7 +11,7 @@ using MyFacebookApp.Model;
 
 namespace MyFacebookApp.View
 {
-	public partial class JobPanel : AppScreenPanel
+	public partial class JobPanel : AppScreenPanel, IBackable
 	{
 		private int					m_LastChosenContactIndex;
 
