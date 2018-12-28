@@ -29,7 +29,7 @@ namespace MyFacebookApp.View
 			listBoxJobs.Items.Clear();
 			try
 			{
-				hitechWorkerContacts = r_AppEngine.FindHitechWorkersContacts();
+				hitechWorkerContacts = r_AppEngine.Friends; //r_AppEngine.FindHitechWorkersContacts();
 				if (hitechWorkerContacts != null && hitechWorkerContacts.Count > 0)
 				{
 					FacebookView.CreateThread(() => 

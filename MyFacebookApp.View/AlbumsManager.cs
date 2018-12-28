@@ -47,6 +47,7 @@ namespace MyFacebookApp.View
 							{
 								currentAlbumPictureWrapper = new PictureWrapper(albumPictureURL);
 								currentAlbumPictureBox = currentAlbumPictureWrapper.PictureBox;
+								currentAlbumPictureBox.Enabled = false;
 								currentAlbumPictureBox.Cursor = Cursors.Hand;
 								currentAlbumPictureBox.MouseEnter += new EventHandler(album_Enter);
 								currentAlbumPictureBox.MouseLeave += new EventHandler(album_Leave);
@@ -66,6 +67,10 @@ namespace MyFacebookApp.View
 							}
 						}
 					}
+				}
+				foreach (Control currItem in r_PanelToDisplayIn.Controls)
+				{
+					currItem.Enabled = true;
 				}
 			}
 		}

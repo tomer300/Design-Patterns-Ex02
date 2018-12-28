@@ -13,7 +13,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/25 21:40:42.797</sourceFile>
+      <sourceFile>2018/12/28 19:21:48.399</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -30,7 +30,19 @@
       <StyleCop.CSharp.SpacingRules>2018/03/24 15:47:25.895</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
+        <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
+        <line>4</line>
+        <index>97</index>
+        <endIndex>158</endIndex>
+        <startLine>4</startLine>
+        <startColumn>31</startColumn>
+        <endLine>4</endLine>
+        <endColumn>92</endColumn>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="AppSettings.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
@@ -59,7 +71,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/25 21:40:42.777</sourceFile>
+      <sourceFile>2018/12/28 19:24:42.097</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>

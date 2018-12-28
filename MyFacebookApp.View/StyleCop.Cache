@@ -128,7 +128,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/22 16:01:34.311</sourceFile>
+      <sourceFile>2018/12/28 19:20:24.880</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -145,7 +145,24 @@
       <StyleCop.CSharp.SpacingRules>2018/03/24 15:47:25.895</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentMustBePrecededByBlankLine" ruleCheckId="SA1515">
+        <context>A single-line comment must be preceded by a blank line or another single-line comment, or must be the first item in its scope. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
+        <line>12</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
+        <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
+        <line>12</line>
+        <index>290</index>
+        <endIndex>349</endIndex>
+        <startLine>12</startLine>
+        <startColumn>3</startColumn>
+        <endLine>12</endLine>
+        <endColumn>62</endColumn>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="AppScreenFactory.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
@@ -220,7 +237,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/22 18:39:31.545</sourceFile>
+      <sourceFile>2018/12/28 19:20:24.916</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -312,7 +329,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/21 18:31:16.736</sourceFile>
+      <sourceFile>2018/12/28 18:30:24.006</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -727,7 +744,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/26 19:51:53.360</sourceFile>
+      <sourceFile>2018/12/28 19:20:24.925</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -750,7 +767,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/26 19:53:03.322</sourceFile>
+      <sourceFile>2018/12/28 18:37:06.496</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -779,7 +796,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/26 19:06:50.188</sourceFile>
+      <sourceFile>2018/12/28 19:20:24.896</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -831,7 +848,7 @@
     <timestamps>
       <styleCop>2018/03/24 15:47:25.895</styleCop>
       <settingsFile>2018/03/24 16:09:35.682</settingsFile>
-      <sourceFile>2018/12/26 19:06:50.161</sourceFile>
+      <sourceFile>2018/12/28 19:20:38.426</sourceFile>
       <parser>2018/03/24 15:47:25.895</parser>
       <StyleCop.CSharp.DocumentationRules>2018/03/24 15:47:25.895</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1689227458</StyleCop.CSharp.DocumentationRules.FilesHashCode>

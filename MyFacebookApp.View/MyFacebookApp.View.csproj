@@ -127,7 +127,6 @@
       <DependentUpon>UserDetailsPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Event.datasource" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Page.datasource" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.User.datasource" />

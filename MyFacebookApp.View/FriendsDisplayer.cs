@@ -32,6 +32,10 @@ namespace MyFacebookApp.View
 				{
 					showFriendProfilePicture(friend, ref hasShownMessageBox);
 				}
+				foreach (Control currItem in r_DisplayPanel.Controls)
+				{
+					currItem.Enabled = true;
+				}
 			}
 		}
 
@@ -63,7 +67,7 @@ namespace MyFacebookApp.View
 						friendPictureWrapper.PictureBox,
 						firstName,
 						lastName);
-
+					friendPicture.FriendProfilePicture.Enabled = false;
 					if (FriendOnClickDelegate != null)
 					{
 						friendPicture.FriendProfilePicture.Name = string.Format("{0} {1}", firstName, lastName);

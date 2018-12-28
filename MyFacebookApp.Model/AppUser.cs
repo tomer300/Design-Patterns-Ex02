@@ -4,7 +4,7 @@ using static FacebookWrapper.ObjectModel.User;
 
 namespace MyFacebookApp.Model
 {
-	public class AppUser : WorkExperience
+	public class AppUser
 	{
 		private readonly User r_LoggedInUser;
 
@@ -33,7 +33,7 @@ namespace MyFacebookApp.Model
 		}
 
 		public string FirstName
-		{ 
+		{
 			get
 			{
 				string firstName;
@@ -98,7 +98,7 @@ namespace MyFacebookApp.Model
 				try
 				{
 					location = r_LoggedInUser.Location.Location;
-					if(location == null)
+					if (location == null)
 					{
 						throw new Facebook.FacebookApiException("Couldn't fetch user's Location.");
 					}
@@ -213,8 +213,8 @@ namespace MyFacebookApp.Model
 
 		internal FacebookObjectCollection<AppUser> GetFriends()
 		{
-			FacebookObjectCollection<AppUser>	friends = new FacebookObjectCollection<AppUser>();
-			FacebookObjectCollection<User>		userFriends;
+			FacebookObjectCollection<AppUser> friends = new FacebookObjectCollection<AppUser>();
+			FacebookObjectCollection<User> userFriends;
 
 			try
 			{
@@ -234,8 +234,8 @@ namespace MyFacebookApp.Model
 
 		public Page GetWorkPlace()
 		{
-			WorkExperience[]	allWorks;
-			Page				workPlace = null;
+			WorkExperience[] allWorks;
+			Page workPlace = null;
 
 			try
 			{

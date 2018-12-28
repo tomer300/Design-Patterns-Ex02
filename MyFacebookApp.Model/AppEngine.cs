@@ -1,14 +1,14 @@
 ﻿using FacebookWrapper.ObjectModel;
 
 // App ID: 2246590548924227
-namespace MyFacebookApp.Model
+namespace MyFacebookApp.Model //NEED TO CHECK IF LOCKS AND DISABLING BUTTONS WORKS PROPERLY.
 {
 	public class AppEngine
 	{
 		private Job		m_Job;
 		private Match	m_Match;
 		private IDistance m_DistanceAdapter;
-		//private IDistance m_DistanceAdapter;
+
 		public IDistance DistanceBetweenTwoCoordinatesAdapter
 		{
 			get

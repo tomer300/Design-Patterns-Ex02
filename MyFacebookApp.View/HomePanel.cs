@@ -82,7 +82,6 @@ namespace MyFacebookApp.View
 
 		private void displayAlbums()
 		{
-			albumsRoundedButton.Invoke(new Action(() => albumsRoundedButton.Enabled = false));
 			if (m_AlbumsManager == null)
 			{
 				try
