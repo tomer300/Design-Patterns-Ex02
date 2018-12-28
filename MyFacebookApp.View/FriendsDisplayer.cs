@@ -20,14 +20,18 @@ namespace MyFacebookApp.View
 			r_Friends = i_Friends;
 			r_DisplayPanel = i_PanelToDisplayIn;
 		}
-		
+
 		public void Display()
 		{
 			bool hasShownMessageBox = false;
 
-			foreach (AppUser friend in r_Friends)
+			lock (r_DisplayPanel)
 			{
-				showFriendProfilePicture(friend, ref hasShownMessageBox);
+				r_DisplayPanel.Invoke(new Action(() => r_DisplayPanel.Controls.Clear()));
+				foreach (AppUser friend in r_Friends)
+				{
+					showFriendProfilePicture(friend, ref hasShownMessageBox);
+				}
 			}
 		}
 

@@ -19,14 +19,14 @@ namespace MyFacebookApp.View
 			{
 				FacebookObjectCollection<AppUser> potentialMatches;
 
-				flowLayoutPanelMatchPictures.Invoke(new Action(() => flowLayoutPanelMatchPictures.Controls.Clear()));
 				setLabelsVisibility(false);
 				try
 				{
-					potentialMatches = r_AppEngine.FindAMatch(
+					potentialMatches = r_AppEngine.Friends;
+					/*potentialMatches = r_AppEngine.FindAMatch(
 						checkBoxGirls.Checked,
 						checkBoxBoys.Checked,
-						comboBoxAgeRanges.Items[comboBoxAgeRanges.SelectedIndex].ToString());
+						comboBoxAgeRanges.Items[comboBoxAgeRanges.SelectedIndex].ToString());*/
 					if (potentialMatches != null && potentialMatches.Count > 0)
 					{
 						FriendsDisplayer displayer = new FriendsDisplayer(potentialMatches, flowLayoutPanelMatchPictures);
@@ -82,6 +82,7 @@ namespace MyFacebookApp.View
 				{
 					try
 					{
+						IDistance distanceAdapter = r_AppEngine.DistanceBetweenTwoCoordinatesAdapter;
 						matchAlbums = potentialMatch.GetAlbums();
 						if (matchAlbums != null)
 						{
@@ -90,7 +91,7 @@ namespace MyFacebookApp.View
 						}
 
 						panelUserDetailsMatch.SetDataSource(potentialMatch);
-						double distance = r_AppEngine.DistanceBetweenTwoCoordinatesAdapter.GetDistanceTo(
+						double distance = distanceAdapter.GetDistanceTo(
 							r_AppEngine.LoggedUser.Location.Latitude,
 							r_AppEngine.LoggedUser.Location.Longitude,
 							potentialMatch.Location.Latitude,

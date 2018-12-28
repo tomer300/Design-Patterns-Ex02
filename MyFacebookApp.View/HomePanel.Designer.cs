@@ -42,10 +42,10 @@
 			this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.panelUserDetails = new MyFacebookApp.View.UserDetailsPanel();
 			this.flowLayoutPanelBorderPosts = new System.Windows.Forms.FlowLayoutPanel();
-			this.eventsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.albumsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.friendsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			this.postsRoundedButton = new MyFacebookApp.View.RoundedButton();
+			this.eventsRoundedButton = new MyFacebookApp.View.RoundedButton();
 			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
 			this.panelHomePageTop.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
@@ -167,25 +167,6 @@
 			this.flowLayoutPanelBorderPosts.Size = new System.Drawing.Size(458, 140);
 			this.flowLayoutPanelBorderPosts.TabIndex = 27;
 			// 
-			// eventsRoundedButton
-			// 
-			this.eventsRoundedButton.BackColor = System.Drawing.Color.Transparent;
-			this.eventsRoundedButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("eventsRoundedButton.BackgroundImage")));
-			this.eventsRoundedButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.eventsRoundedButton.FlatAppearance.BorderSize = 0;
-			this.eventsRoundedButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-			this.eventsRoundedButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.eventsRoundedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.eventsRoundedButton.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.eventsRoundedButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
-			this.eventsRoundedButton.Location = new System.Drawing.Point(479, 336);
-			this.eventsRoundedButton.Name = "eventsRoundedButton";
-			this.eventsRoundedButton.Size = new System.Drawing.Size(142, 40);
-			this.eventsRoundedButton.TabIndex = 36;
-			this.eventsRoundedButton.Text = "Events";
-			this.eventsRoundedButton.UseVisualStyleBackColor = false;
-			this.eventsRoundedButton.Click += new System.EventHandler(this.eventsButton_Click);
-			// 
 			// albumsRoundedButton
 			// 
 			this.albumsRoundedButton.BackColor = System.Drawing.Color.Transparent;
@@ -216,7 +197,7 @@
 			this.friendsRoundedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.friendsRoundedButton.Font = new System.Drawing.Font("Century Gothic", 12F);
 			this.friendsRoundedButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
-			this.friendsRoundedButton.Location = new System.Drawing.Point(479, 143);
+			this.friendsRoundedButton.Location = new System.Drawing.Point(475, 143);
 			this.friendsRoundedButton.Name = "friendsRoundedButton";
 			this.friendsRoundedButton.Size = new System.Drawing.Size(142, 40);
 			this.friendsRoundedButton.TabIndex = 34;
@@ -243,8 +224,30 @@
 			this.postsRoundedButton.UseVisualStyleBackColor = false;
 			this.postsRoundedButton.Click += new System.EventHandler(this.postsButton_Click);
 			// 
+			// eventsRoundedButton
+			// 
+			this.eventsRoundedButton.BackColor = System.Drawing.Color.Transparent;
+			this.eventsRoundedButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("eventsRoundedButton.BackgroundImage")));
+			this.eventsRoundedButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.eventsRoundedButton.FlatAppearance.BorderSize = 0;
+			this.eventsRoundedButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+			this.eventsRoundedButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.eventsRoundedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.eventsRoundedButton.Font = new System.Drawing.Font("Century Gothic", 12F);
+			this.eventsRoundedButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+			this.eventsRoundedButton.Location = new System.Drawing.Point(475, 337);
+			this.eventsRoundedButton.Name = "eventsRoundedButton";
+			this.eventsRoundedButton.Size = new System.Drawing.Size(142, 40);
+			this.eventsRoundedButton.TabIndex = 36;
+			this.eventsRoundedButton.Text = "Events";
+			this.eventsRoundedButton.UseVisualStyleBackColor = false;
+			this.eventsRoundedButton.Click += new System.EventHandler(this.eventsButton_Click);
+			// 
 			// HomePanel
 			// 
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.Controls.Add(this.eventsRoundedButton);
 			this.Controls.Add(this.albumsRoundedButton);
 			this.Controls.Add(this.friendsRoundedButton);
 			this.Controls.Add(this.postsRoundedButton);
@@ -254,6 +257,7 @@
 			this.Controls.Add(this.flowLayoutPanelAlbums);
 			this.Controls.Add(this.panelHomePageTop);
 			this.Name = "HomePanel";
+			this.Size = new System.Drawing.Size(936, 537);
 			((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
 			this.panelHomePageTop.ResumeLayout(false);
 			this.panelHomePageTop.PerformLayout();
@@ -275,10 +279,10 @@
 		private MyFacebookApp.View.RoundedButton postsRoundedButton;
 		private MyFacebookApp.View.RoundedButton friendsRoundedButton;
 		private MyFacebookApp.View.RoundedButton albumsRoundedButton;
-		private MyFacebookApp.View.RoundedButton eventsRoundedButton;
 		private System.Windows.Forms.BindingSource eventBindingSource;
 		private System.Windows.Forms.ListBox listBoxLikedPages;
 		private System.Windows.Forms.BindingSource pageBindingSource;
 		private System.Windows.Forms.Label label1;
+		private RoundedButton eventsRoundedButton;
 	}
 }

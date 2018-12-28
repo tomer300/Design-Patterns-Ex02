@@ -28,16 +28,15 @@
       <HashCode>AQAEAAAAAiAAABAQACCACEBSAAAAAAQgEEAAAAAAQAA=</HashCode>
       <FileName>JobPanel.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="MyFacebookApp.View.HomePanel">
     <Position X="3.75" Y="6.25" Width="3.25" />
     <Members>
-      <Method Name="AddLogoutButton" Hidden="true" />
       <Method Name="addPostData" Hidden="true" />
       <Method Name="albumsButton_Click" Hidden="true" />
       <Method Name="albumsButtonChangeDescription" Hidden="true" />
       <Field Name="albumsRoundedButton" Hidden="true" />
-      <Field Name="checkBoxRememberMe" Hidden="true" />
       <Field Name="components" Hidden="true" />
       <Method Name="Dispose" Hidden="true" />
       <Field Name="eventBindingSource" Hidden="true" />
@@ -60,7 +59,7 @@
       <Field Name="tableLayoutPanelPosts" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AACAIDoAATyAABABICCAAUALcAAAhEBAAIAAAABIAEI=</HashCode>
+      <HashCode>AACAICoBATyAABABICCAAUAKMAAAhEBAAIAAAABIAEI=</HashCode>
       <FileName>HomePanel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -88,6 +87,7 @@
       <HashCode>AAEAAAEAACAAEAAAAACADAASAAgEAAAAgAAwAwBAAIA=</HashCode>
       <FileName>MatchPanel.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -9,6 +9,7 @@ namespace MyFacebookApp.View
 	{
 		private readonly FacebookObjectCollection<Album>	r_AlbumsOfUser;
 		private readonly Panel								r_PanelToDisplayIn;
+		//private readonly object								r_PanelLock = new object();
 		public Action										AlbumClickedAction;
 
 		internal AlbumsManager(FacebookObjectCollection<Album> i_AlbumsOfUser, Panel i_PanelToDisplayIn)
@@ -22,44 +23,46 @@ namespace MyFacebookApp.View
 			string albumPictureURL = string.Empty;
 			bool hasShownExceptionMessage = false;
 
-			r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Clear()));
-
-			foreach (Album currentAlbum in r_AlbumsOfUser)
+			lock (r_PanelToDisplayIn)
 			{
-				if (currentAlbum.Count > 0)
+				r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Clear()));
+				foreach (Album currentAlbum in r_AlbumsOfUser)
 				{
-					PictureWrapper	currentAlbumPictureWrapper;
-					PictureBox		currentAlbumPictureBox;
+					if (currentAlbum.Count > 0)
+					{
+						PictureWrapper currentAlbumPictureWrapper;
+						PictureBox currentAlbumPictureBox;
 
-					try
-					{
-						albumPictureURL = currentAlbum.CoverPhoto.PictureNormalURL;
-					}
-					catch (Facebook.FacebookApiException)
-					{
-						// current album has no cover photo, we handle this within PictureWrapper in the form of empty url string.
-					}
-					finally
-					{
 						try
 						{
-							currentAlbumPictureWrapper = new PictureWrapper(albumPictureURL);
-							currentAlbumPictureBox = currentAlbumPictureWrapper.PictureBox;
-							currentAlbumPictureBox.Cursor = Cursors.Hand;
-							currentAlbumPictureBox.MouseEnter += new EventHandler(album_Enter);
-							currentAlbumPictureBox.MouseLeave += new EventHandler(album_Leave);
-							currentAlbumPictureBox.Click += (sender, e) =>
-							{
-								FacebookView.CreateThread(() => album_Click(currentAlbum));
-							};
-							r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Add(currentAlbumPictureBox)));
+							albumPictureURL = currentAlbum.CoverPhoto.PictureNormalURL;
 						}
-						catch (FacebookApiLimitException ex)
+						catch (Facebook.FacebookApiException)
 						{
-							if (!hasShownExceptionMessage)
+							// current album has no cover photo, we handle this within PictureWrapper in the form of empty url string.
+						}
+						finally
+						{
+							try
 							{
-								hasShownExceptionMessage = true;
-								MessageBox.Show(ex.Message);
+								currentAlbumPictureWrapper = new PictureWrapper(albumPictureURL);
+								currentAlbumPictureBox = currentAlbumPictureWrapper.PictureBox;
+								currentAlbumPictureBox.Cursor = Cursors.Hand;
+								currentAlbumPictureBox.MouseEnter += new EventHandler(album_Enter);
+								currentAlbumPictureBox.MouseLeave += new EventHandler(album_Leave);
+								currentAlbumPictureBox.Click += (sender, e) =>
+								{
+									FacebookView.CreateThread(() => album_Click(currentAlbum));
+								};
+								r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Add(currentAlbumPictureBox)));
+							}
+							catch (FacebookApiLimitException ex)
+							{
+								if (!hasShownExceptionMessage)
+								{
+									hasShownExceptionMessage = true;
+									MessageBox.Show(ex.Message);
+								}
 							}
 						}
 					}
@@ -91,37 +94,40 @@ namespace MyFacebookApp.View
 		{
 			bool hasShownExceptionMessage = false;
 
-			r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Clear()));
-			if (AlbumClickedAction != null)
+			lock (r_PanelToDisplayIn)
 			{
-				AlbumClickedAction.Invoke();
-			}
-
-			try
-			{
-				foreach (Photo currentPhoto in i_ClickedAlbum.Photos)
+				r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Clear()));
+				if (AlbumClickedAction != null)
 				{
-					try
-					{
-						PictureWrapper	currentPictureWrapper = new PictureWrapper(currentPhoto.PictureNormalURL);
-						PictureBox		currentPhotoPictureBox = currentPictureWrapper.PictureBox;
+					AlbumClickedAction.Invoke();
+				}
 
-						r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Add(currentPhotoPictureBox)));
-					}
-					catch (FacebookApiLimitException ex)
+				try
+				{
+					foreach (Photo currentPhoto in i_ClickedAlbum.Photos)
 					{
-						if (!hasShownExceptionMessage)
+						try
 						{
-							hasShownExceptionMessage = true;
-							MessageBox.Show(ex.Message);
+							PictureWrapper currentPictureWrapper = new PictureWrapper(currentPhoto.PictureNormalURL);
+							PictureBox currentPhotoPictureBox = currentPictureWrapper.PictureBox;
+
+							r_PanelToDisplayIn.Invoke(new Action(() => r_PanelToDisplayIn.Controls.Add(currentPhotoPictureBox)));
+						}
+						catch (FacebookApiLimitException ex)
+						{
+							if (!hasShownExceptionMessage)
+							{
+								hasShownExceptionMessage = true;
+								MessageBox.Show(ex.Message);
+							}
 						}
 					}
 				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
 			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message);
-			}	
 		}
 	}
 }

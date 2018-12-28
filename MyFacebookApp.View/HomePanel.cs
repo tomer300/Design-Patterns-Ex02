@@ -42,9 +42,9 @@ namespace MyFacebookApp.View
 
 		private void fetchFriends()
 		{
-			flowLayoutPanelFriends.Invoke(new Action(() => flowLayoutPanelFriends.Controls.Clear()));
 			try
-			{	
+			{
+				friendsRoundedButton.Invoke(new Action(() => friendsRoundedButton.Enabled = false));
 				FriendsDisplayer displayer = new FriendsDisplayer(r_AppEngine.Friends, flowLayoutPanelFriends);
 				displayer.Display();
 			}
@@ -82,6 +82,7 @@ namespace MyFacebookApp.View
 
 		private void displayAlbums()
 		{
+			albumsRoundedButton.Invoke(new Action(() => albumsRoundedButton.Enabled = false));
 			if (m_AlbumsManager == null)
 			{
 				try
@@ -125,6 +126,7 @@ namespace MyFacebookApp.View
 		{
 			try
 			{
+				eventsRoundedButton.Invoke(new Action(() => eventsRoundedButton.Enabled = false));
 				FacebookObjectCollection<Event> events = r_AppEngine.Events;
 
 				if (!listBoxEvents.InvokeRequired)
@@ -152,6 +154,7 @@ namespace MyFacebookApp.View
 			FacebookObjectCollection<Post> allPosts;
 			bool hasShownExceptionMessage = false;
 
+			postsRoundedButton.Invoke(new Action(() => postsRoundedButton.Enabled = false));
 			tableLayoutPanelPosts.Invoke(new Action(() => tableLayoutPanelPosts.Controls.Clear()));
 			tableLayoutPanelPosts.Invoke(new Action(() => tableLayoutPanelPosts.RowStyles.Clear()));
 			try

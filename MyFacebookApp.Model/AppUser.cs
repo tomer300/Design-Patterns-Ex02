@@ -4,7 +4,7 @@ using static FacebookWrapper.ObjectModel.User;
 
 namespace MyFacebookApp.Model
 {
-	public class AppUser
+	public class AppUser : WorkExperience
 	{
 		private readonly User r_LoggedInUser;
 

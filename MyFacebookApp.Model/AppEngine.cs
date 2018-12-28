@@ -7,8 +7,20 @@ namespace MyFacebookApp.Model
 	{
 		private Job		m_Job;
 		private Match	m_Match;
+		private IDistance m_DistanceAdapter;
+		//private IDistance m_DistanceAdapter;
+		public IDistance DistanceBetweenTwoCoordinatesAdapter
+		{
+			get
+			{
+				if (m_DistanceAdapter == null)
+				{
+					m_DistanceAdapter = new DistanceBetweenTwoCoordinatesAdapter();
+				}
 
-		public IDistance DistanceBetweenTwoCoordinatesAdapter { get; private set; } = new DistanceBetweenTwoCoordinatesAdapter();
+				return m_DistanceAdapter;
+			}
+		}
 
 		public AppUser LoggedUser { get; private set; }
 

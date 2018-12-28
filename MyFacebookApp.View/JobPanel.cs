@@ -27,7 +27,6 @@ namespace MyFacebookApp.View
 			bool								hasShownMessageBox = false;
 
 			listBoxJobs.Items.Clear();
-			flowLayoutPanelContactPhotos.Controls.Clear();
 			try
 			{
 				hitechWorkerContacts = r_AppEngine.FindHitechWorkersContacts();

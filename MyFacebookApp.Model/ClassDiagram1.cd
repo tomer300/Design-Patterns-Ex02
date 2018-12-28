@@ -46,6 +46,10 @@
       <FileName>AppUser.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="FacebookWrapper.ObjectModel.WorkExperience">
+    <Position X="4.25" Y="0.5" Width="3" />
+    <TypeIdentifier />
+  </Class>
   <Interface Name="MyFacebookApp.Model.IDistance">
     <Position X="7.75" Y="5.75" Width="2" />
     <TypeIdentifier>
