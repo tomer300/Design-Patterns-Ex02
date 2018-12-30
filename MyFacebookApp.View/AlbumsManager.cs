@@ -9,7 +9,6 @@ namespace MyFacebookApp.View
 	{
 		private readonly FacebookObjectCollection<Album>	r_AlbumsOfUser;
 		private readonly Panel								r_PanelToDisplayIn;
-		//private readonly object								r_PanelLock = new object();
 		public Action										AlbumClickedAction;
 
 		internal AlbumsManager(FacebookObjectCollection<Album> i_AlbumsOfUser, Panel i_PanelToDisplayIn)
@@ -68,6 +67,7 @@ namespace MyFacebookApp.View
 						}
 					}
 				}
+
 				foreach (Control currItem in r_PanelToDisplayIn.Controls)
 				{
 					currItem.Enabled = true;

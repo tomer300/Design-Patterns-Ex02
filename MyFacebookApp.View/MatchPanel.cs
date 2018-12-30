@@ -22,11 +22,10 @@ namespace MyFacebookApp.View
 				setLabelsVisibility(false);
 				try
 				{
-					potentialMatches = r_AppEngine.Friends;
-					/*potentialMatches = r_AppEngine.FindAMatch(
+					potentialMatches = r_AppEngine.FindAMatch(
 						checkBoxGirls.Checked,
 						checkBoxBoys.Checked,
-						comboBoxAgeRanges.Items[comboBoxAgeRanges.SelectedIndex].ToString());*/
+						comboBoxAgeRanges.Items[comboBoxAgeRanges.SelectedIndex].ToString());
 					if (potentialMatches != null && potentialMatches.Count > 0)
 					{
 						FriendsDisplayer displayer = new FriendsDisplayer(potentialMatches, flowLayoutPanelMatchPictures);

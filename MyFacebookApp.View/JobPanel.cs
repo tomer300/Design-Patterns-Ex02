@@ -24,20 +24,16 @@ namespace MyFacebookApp.View
 		private void findAJobButton_Click(object sender, EventArgs e)
 		{
 			FacebookObjectCollection<AppUser>	hitechWorkerContacts;
-			bool								hasShownMessageBox = false;
-
+			
 			listBoxJobs.Items.Clear();
 			try
 			{
-				hitechWorkerContacts = r_AppEngine.Friends; //r_AppEngine.FindHitechWorkersContacts();
+				hitechWorkerContacts = r_AppEngine.FindHitechWorkersContacts();
 				if (hitechWorkerContacts != null && hitechWorkerContacts.Count > 0)
 				{
 					FacebookView.CreateThread(() => 
 					{
-						foreach (AppUser currentContact in hitechWorkerContacts)
-						{
-							addContactToListBoxJobs(currentContact, ref hasShownMessageBox);
-						}
+						addAllContactsToListBox(hitechWorkerContacts);
 					});
 					FriendsDisplayer displayer = new FriendsDisplayer(hitechWorkerContacts, flowLayoutPanelContactPhotos);
 					displayer.FriendOnClickDelegate += contactPic_Click;
@@ -55,6 +51,16 @@ namespace MyFacebookApp.View
 			}
 
 			listBoxJobs.SelectedIndexChanged += new EventHandler(contactInfo_Click);
+		}
+
+		private void addAllContactsToListBox(FacebookObjectCollection<AppUser> i_HitechWorkerContacts)
+		{
+			bool hasShownMessageBox = false;
+
+			foreach (AppUser currentContact in i_HitechWorkerContacts)
+			{
+				addContactToListBoxJobs(currentContact, ref hasShownMessageBox);
+			}
 		}
 
 		private void addContactToListBoxJobs(AppUser i_CurrentContact, ref bool io_HasShownMessageBox)

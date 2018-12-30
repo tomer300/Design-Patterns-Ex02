@@ -1,7 +1,7 @@
 ﻿using FacebookWrapper.ObjectModel;
 
 // App ID: 2246590548924227
-namespace MyFacebookApp.Model //NEED TO CHECK IF LOCKS AND DISABLING BUTTONS WORKS PROPERLY.
+namespace MyFacebookApp.Model
 {
 	public class AppEngine
 	{

@@ -32,6 +32,7 @@ namespace MyFacebookApp.View
 				{
 					showFriendProfilePicture(friend, ref hasShownMessageBox);
 				}
+
 				foreach (Control currItem in r_DisplayPanel.Controls)
 				{
 					currItem.Enabled = true;
